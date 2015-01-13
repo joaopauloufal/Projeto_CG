@@ -54,20 +54,19 @@ def piso():
     glColor3f(.5, .5, .5) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(0.04, -1.0, 0.0)  #Transtaçao do objeto
+    glTranslate(0.04, -0.82, 0.0)  #Transtaçao do objeto
     glScale(4.0, 0.2, 4.0)    
     glutSolidCube(0.9) 
     glPopMatrix()
     
-def cadeira(eixoX, eixoY, eixoZ):
-    
+def cadeira(eixoX, eixoY, eixoZ):    
     
     #base de sustentação
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 1, 0, 0)
     glTranslate(0, 0, 0.1)
-    glutSolidCylinder(0.1, 0.8, 10, 10)
+    glutSolidCylinder(0.1, 0.5, 10, 10)
     glPopMatrix()
     
     #assento
@@ -130,13 +129,29 @@ def cadeira(eixoX, eixoY, eixoZ):
     glRotatef(90, 0, 1, 0)
     glTranslate(0.0, 0.15, -0.4)
     glutSolidTorus(.05, 0.3, 40, 40, 40)
+    glPopMatrix()
+    
+    #pé1
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glRotatef(90, 0, 1, 0)
+    glTranslate(0, -0.65, -0.5)
+    glutSolidCylinder(0.08, 1, 10, 10)
+    glPopMatrix()
+    
+    #pé2
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glRotatef(90, 0, 0, 0)
+    glTranslate(0, -0.65, -0.5)
+    glutSolidCylinder(0.08, 1, 10, 10)
     glPopMatrix()         
     
     
 def desenho():
     eixos()
     cadeira(1, 1, 1)
-#    piso()
+    piso()
     
 def iluminacao_da_cena1():
 
