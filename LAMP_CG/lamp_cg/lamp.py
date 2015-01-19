@@ -58,101 +58,14 @@ def piso():
     glTranslate(0.04, -0.82, 0.0)  #Transtaçao do objeto
     glScale(4.0, 0.2, 4.0)    
     glutSolidCube(0.9) 
-    glPopMatrix()
-    
-# def cadeira(eixoX, eixoY, eixoZ):    
-#     
-#     #base de sustentação
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 1, 0, 0)
-#     glTranslate(0, 0, 0.1)
-#     glutSolidCylinder(0.1, 0.5, 10, 10)
-#     glPopMatrix()
-#     
-#     #assento
-#     glColor3f(0, 0, 1)
-#     glPushMatrix()
-#     glRotatef(90, 1, 0, 0)
-#     glutSolidCylinder(0.5, 0.2, 15, 10)
-#     glPopMatrix()
-#     
-#     #barra1
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 1, 0, 0)
-#     glTranslate(-0.1, 0.53, -0.6)
-#     glutSolidCylinder(0.05, 0.8, 10, 10)
-#     glPopMatrix()
-#     
-#     #barra2
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 1, 0, 0)
-#     glTranslate(0.1, 0.53, -0.6)
-#     glutSolidCylinder(0.05, 0.8, 10, 10)
-#     glPopMatrix()
-#     
-#     #barra3
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 1, 0)
-#     glTranslate(-0.53, 0.62, -0.15)
-#     glutSolidCylinder(0.05, 0.3, 10, 10)
-#     glPopMatrix()
-#     
-#     #apoio
-#     glColor3f(0, 0, 1)
-#     glPushMatrix()
-#     glRotatef(90, 0, 0, 0)
-#     glTranslate(0, 0.6, 0.3)
-#     glutSolidCylinder(0.35, 0.1, 15, 10)
-#     glPopMatrix()
-#     
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 0, 0)
-#     glTranslate(0, 0.6, 0.4)
-#     glutSolidCylinder(0.35, 0.1, 15, 10)
-#     glPopMatrix()   
-#     
-#     #braço1
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 1, 0)
-#     glTranslate(0.0, 0.15, 0.4)
-#     glutSolidTorus(.05, 0.3, 40, 40, 40)
-#     glPopMatrix()
-#     
-#     #braço2
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 1, 0)
-#     glTranslate(0.0, 0.15, -0.4)
-#     glutSolidTorus(.05, 0.3, 40, 40, 40)
-#     glPopMatrix()
-#     
-#     #pé1
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 1, 0)
-#     glTranslate(0, -0.65, -0.5)
-#     glutSolidCylinder(0.08, 1, 10, 10)
-#     glPopMatrix()
-#     
-#     #pé2
-#     glColor3f(0, 0, 0)
-#     glPushMatrix()
-#     glRotatef(90, 0, 0, 0)
-#     glTranslate(0, -0.65, -0.5)
-#     glutSolidCylinder(0.08, 1, 10, 10)
-#     glPopMatrix()         
+    glPopMatrix()     
     
     
 def desenho():
     eixos()
     mesa(0,0,0)
     cadeira(0, 0, 1)
+    computador(-3, 2.17, 0)
     piso()
     
 def iluminacao_da_cena1():

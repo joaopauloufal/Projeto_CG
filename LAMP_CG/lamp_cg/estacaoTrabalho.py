@@ -159,3 +159,60 @@ def cadeira(eixoX, eixoY, eixoZ):
     glPopMatrix()
     
     glPopMatrix()
+    
+def computador(eixoX, eixoY, eixoZ):
+    
+    glPushMatrix()
+    glRotate(90, 0, 1, 0)
+    glScale(0.65, 0.65, 0.65)
+    glTranslate(eixoX, eixoY, eixoZ)
+    
+    #monitor
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glTranslate(3, 0, 0)
+    glScale(0.1, 1, 1.2)
+    glutSolidCube(1.0)    
+    glPopMatrix()
+    
+    
+    glColor3f(0, 0 ,0)
+    glPushMatrix()
+    glTranslate(3.08, -0.60, 0)
+    glScale(0.2, 0.9, 0.3)
+    glutSolidCube(0.5)
+    glPopMatrix()
+    
+    glColor3f(0, 0 ,0)
+    glPushMatrix()
+    glTranslate(3.08, -0.74, 0)
+    glRotate(90, 1, 0, 0)
+    glScale(1, 1, 0.05)
+    glutSolidCylinder(0.3, 2, 20, 2)
+    glPopMatrix()
+    
+    #gabinete
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glTranslate(3, -0.25, 1)
+    glScale(1, 3, 1)
+    glutSolidCube(0.4)
+    glPopMatrix()
+    
+    #teclado
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glTranslate(2.4, -1, 0)
+    glScale(1, 0.2, 3)
+    glutSolidCube(0.4)
+    glPopMatrix()
+    
+    #mouse
+    glColor3f(0, 0, 0)
+    glPushMatrix()
+    glTranslate(2.4, -1, -1.1)
+    glScale(1, 0.5, 0.8)
+    glutSolidSphere(0.1, 40, 40)
+    glPopMatrix()
+    glPopMatrix()
+    
