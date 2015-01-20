@@ -51,14 +51,36 @@ def eixos():
     glPopMatrix()    
     
     
-def piso():   
+def ambiente():
+      
+    #piso 
     glColor3f(.5, .5, .5) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
     glTranslate(0.04, -0.82, 0.0)  #Transtaçao do objeto
-    glScale(4.0, 0.2, 4.0)    
+    glScale(9.0, 0.2, 9.0)    
     glutSolidCube(0.9) 
-    glPopMatrix()     
+    glPopMatrix()
+    
+    #parede1
+    glColor3f(.5, .5, .5) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    glTranslate(0.04, 3.975, -1.35)  #Transtaçao do objeto
+    glScale(9.0, 0.2, 5.0)
+    glutSolidCube(0.9)
+    glPopMatrix()
+    
+    #parede2
+    glColor3f(.5, .5, .5) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    glTranslate(0.04, -3.975, -1.35)  #Transtaçao do objeto
+    glScale(9.0, 0.2, 5.0)
+    glutSolidCube(0.9)
+    glPopMatrix()
+    
+         
     
     
 def desenho():
@@ -66,7 +88,7 @@ def desenho():
     mesa(0,0,0)
     cadeira(0, 0, 1)
     computador(-3, 2.17, 0)
-    piso()
+    ambiente()
     
 def iluminacao_da_cena1():
 
