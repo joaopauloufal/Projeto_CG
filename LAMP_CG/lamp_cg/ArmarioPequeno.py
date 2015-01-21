@@ -2,7 +2,11 @@
 # -*- coding: utf-8 -*-
 # Autor: Danilo Victor Barbosa da Costa
 
+'''
+Created on 13/01/2015
 
+@author: grupoLAMP
+'''
 from math import cos
 from math import pi
 from math import sin
@@ -31,29 +35,7 @@ angulo = 30
 girarPorta = 0
 
 
-def eixos():
-    glColor3f(.9, .1, .1)
-    glPushMatrix()
-    glRotatef(90, 0.0, 1.0, 0.0)
-    glTranslate( 0.0, 0.0, -2.0)
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-    glColor3f(.1, .1, .9)
-    glPushMatrix()
-    glRotatef(90, 1.0, 0.0, 0.0)
-    glTranslate( 0.0, 0.0, -2.0)
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-    glColor3f(.1, .9, .1)
-    glPushMatrix()
-    glTranslate( 0.0, 0.0, -2.0)
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-
-def desenho():
+def armarioPequeno():
     global aux1
     global aux2
     global tec
@@ -152,25 +134,6 @@ def prancha():
     glPopMatrix()
 
 
-def tela():
-    global angulo
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-    glClearColor(1.0, 1.0, 1.0, 1.0)
-    glMatrixMode(GL_PROJECTION)
-    glLoadIdentity()
-
-    gluPerspective(angulo,1,0.1,500)
-
-    glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()
-
-    gluLookAt(sin(esquerdaDireita) * 10, 0 + cimaBaixo ,cos(esquerdaDireita) * 10, aux1,aux2,0, 0,1,0) # Especifica posição do observador e do alvo
-    glEnable(GL_DEPTH_TEST)
-
-    desenho()
-    glFlush()
-
 def Teclado (tecla, x, y):
     global aux1
     global aux2
@@ -189,59 +152,5 @@ def Teclado (tecla, x, y):
         girarPorta = 120
     if tecla == b'f':
         girarPorta = -120
-    tela()
+#     tela()
     glutPostRedisplay()
-
-def TeclasEspeciais (tecla, x, y):
-    global esquerdaDireita
-    global cimaBaixo
-    print("*** Tratamento de teclas especiais")
-    print ("tecla: ", tecla)
-    if tecla == GLUT_KEY_F1:
-        print(">>> Tecla F1 pressionada")
-    elif tecla == GLUT_KEY_F2:
-        print(">>> Tecla F2 pressionada")
-    elif tecla == GLUT_KEY_F3:
-        print(">>> Tecla F3 pressionada")
-    elif tecla == GLUT_KEY_LEFT:
-        esquerdaDireita = esquerdaDireita - 0.1
-    elif tecla == GLUT_KEY_RIGHT:
-        esquerdaDireita = esquerdaDireita + 0.1
-    elif tecla == GLUT_KEY_UP:
-        cimaBaixo = cimaBaixo + 0.1
-    elif tecla == GLUT_KEY_DOWN:
-        cimaBaixo = cimaBaixo - 0.1
-    else:
-        print ("Apertou... " , tecla)
-    tela()
-    glutPostRedisplay()
-
-def ControleMouse(button, state, x, y):
-    global angulo
-    if (button == GLUT_LEFT_BUTTON):
-        if (state == GLUT_DOWN):
-            if (angulo >= 10):
-                angulo -= 2
-
-    if (button == GLUT_RIGHT_BUTTON):
-        if (state == GLUT_DOWN):
-            if (angulo <= 130):
-                angulo += 2
-    tela()
-    glutPostRedisplay()
-
-global distancia
-global cimaBaixo
-
-glutInit(argv)
-glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
-glutInitWindowSize(600,600)
-glutCreateWindow(b"Aula01")
-distancia = 20
-glutDisplayFunc(tela)
-glutMouseFunc(ControleMouse)
-glutKeyboardFunc (Teclado)
-glutSpecialFunc (TeclasEspeciais)
-glutMainLoop()
-
-
