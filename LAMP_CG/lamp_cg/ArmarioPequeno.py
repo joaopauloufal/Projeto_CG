@@ -35,12 +35,14 @@ angulo = 30
 girarPorta = 0
 
 
-def armarioPequeno():
+def armarioPequeno(eixoX, eixoY, eixoZ):
     global aux1
     global aux2
     global tec
     global girarPorta
 
+    glPushMatrix()
+    glTranslate(eixoX, eixoY, eixoZ)
     ##prancha de cima
     glColor(.8, .4, .4)
     glRotate(90, 0,0,1)
@@ -106,6 +108,7 @@ def portaEsquerda():
     glRotate(90,0,0,1)
     glTranslate(-0.3,0.1,0.7)
     glutWireTorus(0.04,0.045,30,30)   # rosquinha
+    glPopMatrix()
     glPopMatrix()
 
 def portaDireita():

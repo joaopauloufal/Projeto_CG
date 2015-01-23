@@ -16,7 +16,10 @@ from math import pi
 from math import sin
 # from numpy import angle
 from sys import argv
-from estacaoTrabalho import *
+from lamp_cg.EstacaoTrabalho import *
+from ArmarioGrande import *
+from ArmarioPequeno import *
+from QuadroScrum import *
 
 esqdir = 0
 cimabaixo = 0
@@ -89,6 +92,9 @@ def desenho():
     cadeira(0, 0, 1)
     computador(-3, 2.17, 0)
     ambiente()
+    armarioGrande(0, 0.5, -1)
+    armarioPequeno(2, 0.5, 0)
+    quadroScrum(3, 2, 3)
     
 def iluminacao_da_cena1():
 
