@@ -32,9 +32,9 @@ girarPorta = 0
 def armarioGrande(eixoX, eixoY, eixoZ):
     global aux1
     global aux2
+    global tec
+    global girarPorta
 
-    glPushMatrix()
-    glTranslate(eixoX, eixoY, eixoZ)
     #parte de tras
     glPushMatrix()
     glRotate(90,0,1,0)
@@ -75,17 +75,32 @@ def armarioGrande(eixoX, eixoY, eixoZ):
 
     #portas
     glPushMatrix()
-    glTranslate(-0.5,-0.5,0)
+    glTranslate(-0.75,-1.2,0)
     for i in range(0, 4):
         for j in range(0, 3):
             glPushMatrix()
             glColor(0.25,0.25,0.25)
             glRotate(90,0,1,0)
-            glTranslate(-0.089,(i-0.7),(j-0.5))
-            glScale(0.27, 0.27, 0.27)
+            glTranslate(-0.089,(i),(j*0.75))
+            glScale(0.27, 0.27, 0.33)
             portaEsquerda()
             glPopMatrix()
     glPopMatrix()
+
+    #Coluna entre portas esquerda
+    glPushMatrix()
+    glColor(0.2,0.2,0.2)
+    glTranslate(-0.376,0.29,0.06)
+    glScale(0.02, 0.97, 0.01)
+    glutSolidCube(4)
+    glPopMatrix()
+
+    #Coluna entre portas direita
+    glPushMatrix()
+    glColor(0.2,0.2,0.2)
+    glTranslate(0.376,0.29,0.06)
+    glScale(0.02, 0.97, 0.01)
+    glutSolidCube(4)
     glPopMatrix()
 
 def portaEsquerda():
