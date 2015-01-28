@@ -44,7 +44,7 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
     ##prancha de cima
-    glColor(.8, .4, .4)
+    glColor3f(0.87, 0.72, 0.53)
     glRotate(90, 0,0,1)
     glPushMatrix()
     glTranslate(0.75,0,0)
@@ -72,7 +72,7 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
     glPopMatrix()
 
     #prancha de trás
-    glColor(.7, .4, .4)
+    glColor3f(0.87, 0.72, 0.53)
     glPushMatrix()
     glRotate(90,0,1,0)
     glTranslate(0.6,0.0,-0.25)
@@ -95,7 +95,7 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
 def portaEsquerda():
     #porta esquerda
     glPushMatrix()
-    glColor(0,0,0)
+    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,1,0)
     glTranslate(-1,0.5,-0.21)
     glPushMatrix()
@@ -104,7 +104,7 @@ def portaEsquerda():
     glPopMatrix()
 
     #maçaneta
-    glColor(1,1,1)
+    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,0,1)
     glTranslate(-0.3,0.1,0.7)
     glutWireTorus(0.04,0.045,30,30)   # rosquinha
@@ -115,7 +115,7 @@ def portaDireita():
     #porta direita
 #     glTranslate(-0.21,-0.5,0.6)
     glPushMatrix()
-    glColor(0,0,0)
+    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,1,0)
     glPushMatrix()
     glScale(0.04, 0.5, 1)
@@ -123,7 +123,7 @@ def portaDireita():
     glPopMatrix()
 
     #maçaneta
-    glColor(1,1,1)
+    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,0,1)
     glTranslate(0.3,0.1,0.7)
     glutWireTorus(0.04,0.045,30,30)   # rosquinha

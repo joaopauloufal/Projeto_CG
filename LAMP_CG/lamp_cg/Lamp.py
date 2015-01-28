@@ -20,6 +20,9 @@ from EstacaoTrabalho import *
 from ArmarioGrande import *
 from ArmarioPequeno import *
 from QuadroScrum import *
+from Janela import *
+from Ventilador import *
+
 
 esqdir = 0
 cimabaixo = 0
@@ -30,7 +33,7 @@ aux4 = 0
 angulo = 45
 
 def eixos():
-    
+
     #desenha os eixos x e y do plano cartesiano.
     glColor3f(.9, .1, .1) # cor RGB  eixo X
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
@@ -51,20 +54,20 @@ def eixos():
     #glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
     glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
     glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()    
-    
-    
+    glPopMatrix()
+
+
 def ambiente():
-      
-    #piso 
+
+    #piso
     glColor3f(.5, .5, .5) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
     glTranslate(0.04, -0.82, 0.0)  #Transtaçao do objeto
-    glScale(9.0, 0.2, 9.0)    
-    glutSolidCube(0.9) 
+    glScale(9.0, 0.2, 9.0)
+    glutSolidCube(0.9)
     glPopMatrix()
-    
+
     #parede1
     glColor3f(.5, .5, .5) # cor RGB  eixo X
     glPushMatrix()
@@ -73,7 +76,7 @@ def ambiente():
     glScale(9.0, 0.2, 5.0)
     glutSolidCube(0.9)
     glPopMatrix()
-    
+
     #parede2
     glColor3f(.5, .5, .5) # cor RGB  eixo X
     glPushMatrix()
@@ -82,20 +85,22 @@ def ambiente():
     glScale(9.0, 0.2, 5.0)
     glutSolidCube(0.9)
     glPopMatrix()
-    
-         
-    
-    
+
+
+
+
 def desenho():
     eixos()
     #mesa(0,0,0)
     #cadeira(0, 0, 1)
     #computador(-3, 2.17, 0)
     #ambiente()
-    armarioGrande(0, 0.5, -1)
+    #armarioGrande(0, 0.5, -1)
     #armarioPequeno(2, 0.5, 0)
-    quadroScrum(3, 2, 3)
-    
+    #quadroScrum(3, 2, 3)
+    #janela(-3,2,3)
+    ventilador(0,0,0)
+
 def iluminacao_da_cena1():
 
     ambiente = [0.2, 0.2, 0.2, 1.0]
@@ -103,11 +108,11 @@ def iluminacao_da_cena1():
     especular = [1.0, 1.0, 1.0, 1.0]
     posicao = [0.0, 3.0, 2.0, 0.0]
     lmodelo_ambiente = [0.2, 0.2, 0.2, 1.0]
-    
+
     glClearColor(1.0, 1.0, 1.0, 1.0)
     glEnable(GL_DEPTH_TEST)
     glShadeModel(GL_SMOOTH)
-     
+
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambiente)
     glLightfv(GL_LIGHT0, GL_DIFFUSE, difusa)
     glLightfv(GL_LIGHT0, GL_POSITION, posicao)
@@ -116,7 +121,7 @@ def iluminacao_da_cena1():
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0)
     glEnable(GL_COLOR_MATERIAL)
-    
+
 def iluminacao_da_cena2():
 
     #Capacidade de brilho do material
@@ -135,26 +140,26 @@ def iluminacao_da_cena2():
     glMateriali(GL_FRONT,GL_SHININESS,especMaterial)
 
     # Ativa o uso da luz ambiente
-    
+
 
     # Define os parâmetros da luz de número 0
     glEnable(GL_LIGHT0)
-    
+
     # Habilita o uso de iluminação
     glEnable(GL_LIGHTING)
-    
-    
+
+
     # Habilita a luz de número 0
-    
+
     # Habilita o depth-buffering
     glEnable(GL_DEPTH_TEST)
-    
+
     glEnable(GL_COLOR_MATERIAL)
 
     # Habilita a definição da cor do material a partir da cor corrente
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
-    
-    
+
+
 def tela():
     global angulo
 
@@ -162,20 +167,20 @@ def tela():
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
     glMatrixMode(GL_PROJECTION) # Muda a matriz de projeçao
     glLoadIdentity()# carrega a matriz identidade
-    
-    gluPerspective(angulo,1,0.1,500) # Especifica a projeção perspectiva    
+
+    gluPerspective(angulo,1,0.1,500) # Especifica a projeção perspectiva
 
     glMatrixMode(GL_MODELVIEW) # Especifica sistema de coordenadas do modelo
     glLoadIdentity() # Inicializa sistema de coordenadas do modelo
 
     gluLookAt(sin(esqdir) * 10, 0 + cimabaixo ,cos(esqdir) * 10, aux1,aux2,0, 0,1,0) # Especifica posição do observador e do alvo
     iluminacao_da_cena1()
-#    iluminacao_da_cena2()
+#     iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
 
     desenho()
-    glFlush()        
-    
+    glFlush()
+
 def TeclasEspeciais (tecla, x, y):
     global esqdir
     global cimabaixo
@@ -199,15 +204,15 @@ def TeclasEspeciais (tecla, x, y):
         print ("Apertou... " , tecla)
     tela()
     glutPostRedisplay()
-    
+
 def Teclado(tecla, x ,y):
-    
-            
+
+
     tela()
     glutPostRedisplay()
-    
-    
-    
+
+
+
 def ControleMouse(button, state, x, y):
     global angulo
     print ("Apertou... " , button)
@@ -223,8 +228,8 @@ def ControleMouse(button, state, x, y):
                 angulo += 2
     tela()
     glutPostRedisplay()
-    
-    
+
+
 global distancia
 
 
