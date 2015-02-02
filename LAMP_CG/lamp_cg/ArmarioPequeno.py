@@ -43,6 +43,8 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
 
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
+    glScale(0.6, 0.6, 0.6)
+    glRotate(270, 0, 1, 0)
     ##prancha de cima
     glColor3f(0.87, 0.72, 0.53)
     glRotate(90, 0,0,1)

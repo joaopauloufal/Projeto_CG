@@ -70,75 +70,75 @@ def mesa():
     
 def cadeira():    
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glTranslate(0,0,1)  #Transtaçao do objeto
+    glTranslate(0, -0.22 ,1)  #Transtaçao do objeto
     #base de sustentação
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 1, 0, 0)
     glTranslate(0, 0, 0.1)
-    glutSolidCylinder(0.1, 0.5, 10, 10)
+    glutSolidCylinder(0.05, 0.5, 10, 10)
     glPopMatrix()
     
     #assento
     glColor3f(0, 0, 1)
     glPushMatrix()
     glRotatef(90, 1, 0, 0)
-    glutSolidCylinder(0.5, 0.2, 15, 10)
+    glutSolidCylinder(0.4, 0.1, 15, 10)
     glPopMatrix()
     
     #barra1
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 1, 0, 0)
-    glTranslate(-0.1, 0.53, -0.6)
-    glutSolidCylinder(0.05, 0.8, 10, 10)
+    glTranslate(-0.1, 0.4, -0.7)
+    glutSolidCylinder(0.04, 0.8, 10, 10)
     glPopMatrix()
     
     #barra2
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 1, 0, 0)
-    glTranslate(0.1, 0.53, -0.6)
-    glutSolidCylinder(0.05, 0.8, 10, 10)
+    glTranslate(0.1, 0.4, -0.7)
+    glutSolidCylinder(0.04, 0.8, 10, 10)
     glPopMatrix()
     
     #barra3
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 0, 1, 0)
-    glTranslate(-0.53, 0.62, -0.15)
-    glutSolidCylinder(0.05, 0.3, 10, 10)
+    glTranslate(-0.4, 0.72, -0.15)
+    glutSolidCylinder(0.04, 0.3, 10, 10)
     glPopMatrix()
     
     #apoio
     glColor3f(0, 0, 1)
     glPushMatrix()
     glRotatef(90, 0, 0, 0)
-    glTranslate(0, 0.6, 0.3)
-    glutSolidCylinder(0.35, 0.1, 15, 10)
+    glTranslate(0, 0.7, 0.28)
+    glutSolidCylinder(0.35, 0.05, 15, 10)
     glPopMatrix()
     
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 0, 0, 0)
-    glTranslate(0, 0.6, 0.4)
-    glutSolidCylinder(0.35, 0.1, 15, 10)
+    glTranslate(0, 0.7, 0.33)
+    glutSolidCylinder(0.35, 0.05, 15, 10)
     glPopMatrix()   
     
     #braço1
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 0, 1, 0)
-    glTranslate(0.0, 0.15, 0.4)
-    glutSolidTorus(.05, 0.3, 40, 40, 40)
+    glTranslate(0.0, 0.21, 0.3)
+    glutSolidTorus(.025, 0.3, 40, 40, 40)
     glPopMatrix()
     
     #braço2
     glColor3f(0, 0, 0)
     glPushMatrix()
     glRotatef(90, 0, 1, 0)
-    glTranslate(0.0, 0.15, -0.4)
-    glutSolidTorus(.05, 0.3, 40, 40, 40)
+    glTranslate(0.0, 0.21, -0.3)
+    glutSolidTorus(.025, 0.3, 40, 40, 40)
     glPopMatrix()
     
     #pé1
@@ -146,7 +146,7 @@ def cadeira():
     glPushMatrix()
     glRotatef(90, 0, 1, 0)
     glTranslate(0, -0.65, -0.5)
-    glutSolidCylinder(0.08, 1, 10, 10)
+    glutSolidCylinder(0.05, 1, 10, 10)
     glPopMatrix()
     
     #pé2
@@ -154,7 +154,7 @@ def cadeira():
     glPushMatrix()
     glRotatef(90, 0, 0, 0)
     glTranslate(0, -0.65, -0.5)
-    glutSolidCylinder(0.08, 1, 10, 10)
+    glutSolidCylinder(0.05, 1, 10, 10)
     glPopMatrix()
     
     glPopMatrix()
@@ -218,6 +218,7 @@ def computador():
 def estacaoDeTrabalho(eixoX, eixoY, eixoZ):
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
+    glScale(0.8, 0.8, 0.8)
     mesa()
     cadeira()
     computador()

@@ -101,8 +101,8 @@ def ambiente():
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(0.04, -0.82, 0.0)  #Transtaçao do objeto
-    glScale(12.0, 0.2, 9.0)
+    glTranslate(-2.00, -0.82, 0.0)  #Transtaçao do objeto
+    glScale(16.5, 0.2, 9.0)
     glutSolidCube(0.9)
     glPopMatrix()
 
@@ -112,8 +112,8 @@ def ambiente():
     #glEnable(GL_TEXTURE_2D)
     glPushMatrix()
     glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(0.04, 3.975, -1.35)  #Transtaçao do objeto
-    glScale(12.0, 0.2, 5.0)
+    glTranslate(-2.0, 3.975, -1.35)  #Transtaçao do objeto
+    glScale(16.4, 0.2, 5.0)
     glutSolidCube(0.9)
     glPopMatrix()
     #glDisable(GL_TEXTURE_2D)
@@ -124,8 +124,8 @@ def ambiente():
     
     glPushMatrix()
     glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(0.04, -3.975, -1.35)  #Transtaçao do objeto
-    glScale(12.0, 0.2, 5.0)  
+    glTranslate(-2.0, -3.975, -1.35)  #Transtaçao do objeto
+    glScale(16.4, 0.2, 5.0)  
     glutSolidCube(0.9)
     glPopMatrix()
     
@@ -133,7 +133,7 @@ def ambiente():
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
-    glTranslate(1.35, 5.28, 0.0)  #Transtaçao do objeto
+    glTranslate(1.35, 9.28, 0.0)  #Transtaçao do objeto
     glScale(5.0, 0.2, 9.0)
     glutSolidCube(0.9)
     glPopMatrix()
@@ -154,12 +154,19 @@ def ambiente():
 
 
 def desenho():
-    estacaoDeTrabalho(4, 0, -3.3)
     ambiente()
-    
+    estacaoDeTrabalho(4, 0, -3.5)
+    estacaoDeTrabalho(2.7, 0, -3.5)
+    estacaoDeTrabalho(1.1, 0, -3.5)
+    estacaoDeTrabalho(-0.5, 0, -3.5)
+    estacaoDeTrabalho(-2.1, 0, -3.5)
+    estacaoDeTrabalho(-3.7, 0, -3.5)
+    estacaoDeTrabalho(-6.3, 0, -3.5)
+    estacaoDeTrabalho(-7.9, 0, -3.5)   
     armarioGrande(3, 1.05, 3)
-    #armarioPequeno(2, 0.5, 0)
-    #quadroScrum(3, 2, 3)
+    armarioPequeno(5.0, 0.0, -1.5)
+    quadroScrum(3, 2, -3.8)
+    quadroScrum(-2, 2, -3.8)
     #janela(-3,2,3)
     #ventilador(0,0,0)
 
