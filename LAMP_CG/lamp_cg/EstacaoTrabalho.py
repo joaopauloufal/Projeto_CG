@@ -15,9 +15,9 @@ from math import sin
 # from numpy import angle
 from sys import argv
 
-def mesa(eixoX, eixoY, eixoZ):
+def mesa():
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glTranslate(eixoX, eixoY, eixoZ)  #Transtaçao do objeto
+    glTranslate(0, 0, 0)  #Transtaçao do objeto
     
     # OBJETO 1  mesa (parte do direito)
     glColor3f(.6, 0.3, 0.2) # cor RGB
@@ -68,10 +68,9 @@ def mesa(eixoX, eixoY, eixoZ):
     glPopMatrix()
 
     
-def cadeira(eixoX, eixoY, eixoZ):    
+def cadeira():    
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glTranslate(eixoX, eixoY, eixoZ)  #Transtaçao do objeto
-    
+    glTranslate(0,0,1)  #Transtaçao do objeto
     #base de sustentação
     glColor3f(0, 0, 0)
     glPushMatrix()
@@ -160,12 +159,12 @@ def cadeira(eixoX, eixoY, eixoZ):
     
     glPopMatrix()
     
-def computador(eixoX, eixoY, eixoZ):
+def computador():
     
     glPushMatrix()
     glRotate(90, 0, 1, 0)
     glScale(0.65, 0.65, 0.65)
-    glTranslate(eixoX, eixoY, eixoZ)
+    glTranslate(-3, 2.17, 0)
     
     #monitor
     glColor3f(0, 0, 0)
@@ -215,4 +214,12 @@ def computador(eixoX, eixoY, eixoZ):
     glutSolidSphere(0.1, 40, 40)
     glPopMatrix()
     glPopMatrix()
+    
+def estacaoDeTrabalho(eixoX, eixoY, eixoZ):
+    glPushMatrix()
+    glTranslate(eixoX, eixoY, eixoZ)
+    mesa()
+    cadeira()
+    computador()
+    glPopMatrix() 
     

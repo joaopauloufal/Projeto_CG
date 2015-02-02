@@ -35,10 +35,15 @@ def armarioGrande(eixoX, eixoY, eixoZ):
     global tec
     global girarPorta
 
+    glPushMatrix()
+    glTranslate(eixoX, eixoY, eixoZ)
+    glScale(0.8, 0.8, 0.8)
+    glRotate(180, 1, 0, 0)
+    glColor3f(0.86, 0.86, 0.86)
     #parte de tras
     glPushMatrix()
     glRotate(90,0,1,0)
-    glColor(0.2,0.2,0.2)
+    
     glTranslate(1,0.3,0.0)
     glScale(1, 1.06, 1)
     prancha()
@@ -46,7 +51,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
 
     #Lado direito
     glPushMatrix()
-    glColor(0.2,0.2,0.2)
+    
     glTranslate(1.1,0.3,-0.5)
     glScale(0.5, 1.06, 0.5)
     prancha()
@@ -54,7 +59,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
 
     #Lado esquerdo
     glPushMatrix()
-    glColor(0.2,0.2,0.2)
+    
     glTranslate(-1.1,0.3,-0.5)
     glScale(0.5, 1.06, 0.5)
     prancha()
@@ -65,7 +70,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
     glTranslate(0,-1.1,0)
     for i in range(0, 5):
         glPushMatrix()
-        glColor(0.25,0.25,0.25)
+        
         glRotate(90,0,0,1)
         glTranslate((i-0.6),0.0,-0.5)
         glScale(0.5, 0.58, 0.5)
@@ -79,7 +84,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
     for i in range(0, 4):
         for j in range(0, 3):
             glPushMatrix()
-            glColor(0.25,0.25,0.25)
+            
             glRotate(90,0,1,0)
             glTranslate(-0.089,(i),(j*0.75))
             glScale(0.27, 0.27, 0.33)
@@ -89,7 +94,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
 
     #Coluna entre portas esquerda
     glPushMatrix()
-    glColor(0.2,0.2,0.2)
+    
     glTranslate(-0.376,0.29,0.06)
     glScale(0.02, 0.97, 0.01)
     glutSolidCube(4)
@@ -97,16 +102,17 @@ def armarioGrande(eixoX, eixoY, eixoZ):
 
     #Coluna entre portas direita
     glPushMatrix()
-    glColor(0.2,0.2,0.2)
+    
     glTranslate(0.376,0.29,0.06)
     glScale(0.02, 0.97, 0.01)
     glutSolidCube(4)
+    glPopMatrix()
     glPopMatrix()
 
 def portaEsquerda():
     #porta esquerda
     glPushMatrix()
-    glColor(0.22,0.22,0.22)
+    
     glPushMatrix()
     glScale(0.04, 1.8, 1)
     glutSolidCube(2)
@@ -123,7 +129,7 @@ def portaDireita():
     #porta direita
 #     glTranslate(-0.21,-0.5,0.6)
     glPushMatrix()
-    glColor(0,0,0)
+    
     glRotate(90,0,1,0)
     glPushMatrix()
     glScale(0.04, 0.5, 1)
