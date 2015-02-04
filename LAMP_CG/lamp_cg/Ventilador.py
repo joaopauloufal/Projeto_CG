@@ -31,34 +31,35 @@ girarPorta = 0
 
 def ventilador(eixoX, eixoY, eixoZ):
     glPushMatrix()
+    glRotatef(-90, 1.0, 0.0, 0.0)
     glTranslate(eixoX, eixoY, eixoZ)
 
-    glColor3f(0.09, 0.09, 0.09)
+    glColor3f(0.8, 0.8, 0.8)
     glPushMatrix()
-    glTranslate(eixoX, eixoY, eixoZ)
-    glutSolidCylinder(0.5, 0.1, 30, 30)
+    glTranslate(0, 0, 0)
+    glutSolidCylinder(0.5, 0.2, 30, 30)
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(15, 1.0, 0.0, 0.0)
+    glTranslate(0, 0, 0.1)
+    glScalef(2.8,0.4,0.05)
+    glutSolidCube(1)
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(90, 0.0, 0.0, 1.0)
+    glRotatef(15, 1.0, 0.0, 0.0)
+    glTranslate(0, 0, 0.1)
+    glScalef(2.8,0.4,0.05)
+    glutSolidCube(1)
+    glPopMatrix()
+
+    glColor3f(0.8, 0.8, 0.8)
+    glPushMatrix()
+    glTranslate(0, 0, 0.1)
+    glutSolidCylinder(0.05, 1.2, 30, 30)
     glPopMatrix()
 
     glPopMatrix()
 
-
-def Teclado (tecla, x, y):
-    global aux1
-    global aux2
-    global tempoesteira
-    global fire
-    global angulocanhao
-    global girarPorta
-
-    print("*** Tratamento de teclas comuns")
-    print(">>> Tecla: ",tecla)
-
-    if tecla==chr(27): # ESC ?
-        sys.exit(0)
-
-    if tecla == b'a':
-        girarPorta = 120
-    if tecla == b'f':
-        girarPorta = -120
-#     tela()
-    glutPostRedisplay()

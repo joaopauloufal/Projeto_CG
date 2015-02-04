@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 # Autor: João Paulo Ferreira da Silva
+#        Danilo Victor Barbosa da Costa
+#        Roberto Bartolomeu
 '''
  ====== LAMP ===
  Projeto de Computação Gráfica
@@ -22,6 +24,8 @@ from EstacaoTrabalho import *
 from Janela import *
 from QuadroScrum import *
 from Ventilador import *
+from TV import *
+from ArmarioImpressora import *
 
 
 esqdir = 0
@@ -34,7 +38,7 @@ angulo = 45
 textura1 = None
 
 def eixos():
-    
+
     #desenha os eixos x e y do plano cartesiano.
     glColor3f(.9, .1, .1) # cor RGB  eixo X
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
@@ -56,17 +60,17 @@ def eixos():
     glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
     glutSolidCylinder(0.01, 4.0, 4, 10)
     glPopMatrix()
-    
+
 def testa_imagem():
 
     diretorioatual = sys.path[0]
     print(diretorioatual)
-    
+
     img_filename = diretorioatual + "images/parede_branca.jpg"
     print(img_filename)
     im = Image.open(img_filename)
     im.show()
-    
+
 def carrega_imagem():
     global textura1
 
@@ -75,10 +79,10 @@ def carrega_imagem():
         ix, iy, image = im.size[0], im.size[1], im.tostring("raw", "RGBA", 0, -1)
     except SystemError:
         ix, iy, image = im.size[0], im.size[1], im.tostring("raw", "RGBX", 0, -1)
-    
+
     textura1 = glGenTextures(1)
     glBindTexture(GL_TEXTURE_2D, textura1)
-    
+
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)  #repetir textura na horiz
@@ -86,7 +90,7 @@ def carrega_imagem():
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL) # somente textura
     #glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE) # textura + cor
-    
+
     glTexImage2D(
       GL_TEXTURE_2D, 0, 3, ix, iy, 0,
       GL_RGBA, GL_UNSIGNED_BYTE, image
@@ -97,7 +101,7 @@ def carrega_imagem():
 def ambiente():
     global textura1
     #piso
-    
+
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
@@ -107,7 +111,7 @@ def ambiente():
     glPopMatrix()
 
     #parede1
-    #carrega_imagem()    
+    #carrega_imagem()
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     #glEnable(GL_TEXTURE_2D)
     glPushMatrix()
@@ -117,18 +121,18 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
     #glDisable(GL_TEXTURE_2D)
-    
+
 
     #parede2
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
-    
+
     glPushMatrix()
     glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
     glTranslate(-2.0, -3.975, -1.35)  #Transtaçao do objeto
-    glScale(16.4, 0.2, 5.0)  
+    glScale(16.4, 0.2, 5.0)
     glutSolidCube(0.9)
     glPopMatrix()
-    
+
     #parede3
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
@@ -137,8 +141,8 @@ def ambiente():
     glScale(5.0, 0.2, 9.0)
     glutSolidCube(0.9)
     glPopMatrix()
-    
-    
+
+
     #teto
     '''
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
@@ -149,26 +153,28 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
     '''
-    
+
 
 
 
 def desenho():
-    ambiente()
-    estacaoDeTrabalho(4, 0, -3.5)
-    estacaoDeTrabalho(2.7, 0, -3.5)
-    estacaoDeTrabalho(1.1, 0, -3.5)
-    estacaoDeTrabalho(-0.5, 0, -3.5)
-    estacaoDeTrabalho(-2.1, 0, -3.5)
-    estacaoDeTrabalho(-3.7, 0, -3.5)
-    estacaoDeTrabalho(-6.3, 0, -3.5)
-    estacaoDeTrabalho(-7.9, 0, -3.5)   
-    armarioGrande(3, 1.05, 3)
-    armarioPequeno(5.0, 0.0, -1.5)
-    quadroScrum(3, 2, -3.8)
-    quadroScrum(-2, 2, -3.8)
-    #janela(-3,2,3)
-    #ventilador(0,0,0)
+#     ambiente()
+#     estacaoDeTrabalho(4, 0, -3.5)
+#     estacaoDeTrabalho(2.7, 0, -3.5)
+#     estacaoDeTrabalho(1.1, 0, -3.5)
+#     estacaoDeTrabalho(-0.5, 0, -3.5)
+#     estacaoDeTrabalho(-2.1, 0, -3.5)
+#     estacaoDeTrabalho(-3.7, 0, -3.5)
+#     estacaoDeTrabalho(-6.3, 0, -3.5)
+#     estacaoDeTrabalho(-7.9, 0, -3.5)
+#     armarioGrande(3, 1.05, 3)
+#     armarioPequeno(5.0, 0.0, -1.5)
+#     quadroScrum(3, 2, -3.8)
+#     quadroScrum(-2, 2, -3.8)
+#     janela(-3,2,3)
+#     ventilador(0,0,0)
+#     tv(0,0,0)
+    armarioImpressora(0,0,0)
 
 def iluminacao_da_cena1():
 
@@ -196,7 +202,7 @@ def iluminacao_da_cena2():
     luzAmbiente=[0.2,0.2,0.2,1.0]
     #Capacidade de brilho do material
     especularidade=[1.0,1.0,1.0,1.0]
-    luzDifusa = [0.7,0.7,0.7,1.0] #cor      
+    luzDifusa = [0.7,0.7,0.7,1.0] #cor
     luzEspecular = [1.0, 1.0, 1.0, 1.0] #brilho
     posicaoLuz =[20.0, 50.0,50.0, 50.0]
     especMaterial = 60;
@@ -216,20 +222,20 @@ def iluminacao_da_cena2():
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente)
 
     # Define os parâmetros da luz de número 0
-    glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente) 
+    glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente)
     glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa)
     glLightfv(GL_LIGHT0, GL_SPECULAR, luzEspecular)
     glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz)
-    
+
     # Habilita o depth-buffering
     glEnable(GL_COLOR_MATERIAL);
     #Habilita o uso de iluminação
-    glEnable(GL_LIGHTING);  
+    glEnable(GL_LIGHTING);
     #Habilita a luz de número 0
     glEnable(GL_LIGHT0);
     #Habilita o depth-buffering
     glEnable(GL_DEPTH_TEST);
-    
+
 
 
 def tela():
@@ -279,24 +285,24 @@ def TeclasEspeciais (tecla, x, y):
 
 def Teclado(tecla, x ,y):
     global aux1
-    global aux2   
+    global aux2
     global cam
 
     if tecla == b'a':  # tecla A
         aux1 = aux1 + 0.1
-       
-    
+
+
     if tecla == b'd': # tecla D
         aux1 = aux1 - 0.1
-        
-        
+
+
     if tecla == b'w': # tecla W
         aux2 = aux2 - 0.1
-        
+
 
     if tecla == b's': # tecla S
         aux2 = aux2 + 0.1
-        
+
     tela()
     glutPostRedisplay()
 
