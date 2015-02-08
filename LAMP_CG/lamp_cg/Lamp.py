@@ -24,7 +24,6 @@ from EstacaoTrabalho import *
 from Janela import *
 from QuadroScrum import *
 from Ventilador import *
-from TV import *
 from ArmarioImpressora import *
 
 
@@ -160,24 +159,23 @@ def ambiente():
 def desenho():
     ambiente()
 #     Lado direito
-    estacaoDeTrabalho(4, 0, -3.5)
-    estacaoDeTrabalho(2.7, 0, -3.5)
-    estacaoDeTrabalho(1.1, 0, -3.5)
-    estacaoDeTrabalho(-0.5, 0, -3.5)
-    estacaoDeTrabalho(-2.1, 0, -3.5)
-    estacaoDeTrabalho(-3.7, 0, -3.5)
-    estacaoDeTrabalho(-6.3, 0, -3.5)
-    estacaoDeTrabalho(-7.9, 0, -3.5)
+    estacaoDeTrabalho(4, 0, -3.5, 0)
+    estacaoDeTrabalho(2.7, 0, -3.5, 0)
+    estacaoDeTrabalho(1.1, 0, -3.5, 0)
+    estacaoDeTrabalho(-0.5, 0, -3.5, 0)
+    estacaoDeTrabalho(-2.1, 0, -3.5, 0)
+    estacaoDeTrabalho(-3.7, 0, -3.5, 0)
+    estacaoDeTrabalho(-6.3, 0, -3.5, 0)
+    estacaoDeTrabalho(-7.9, 0, -3.5, 0)
 
 #     Lado esquerdo
-#     estacaoDeTrabalho(4, 0, -3.5)
-#     estacaoDeTrabalho(2.7, 0, -3.5)
-#     estacaoDeTrabalho(1.1, 0, -3.5)
-#     estacaoDeTrabalho(-0.5, 0, -3.5)
-#     estacaoDeTrabalho(-2.1, 0, -3.5)
-#     estacaoDeTrabalho(-3.7, 0, -3.5)
+    estacaoDeTrabalho(1.1, 0, 3.5, 180)
+    estacaoDeTrabalho(-0.5, 0, 3.5, 180)
+    estacaoDeTrabalho(-2.1, 0, 3.5, 180)
+    estacaoDeTrabalho(-3.7, 0, 3.5, 180)
 #     quadroScrum(3, 2, -3.8)
 #     quadroScrum(-2, 2, -3.8)
+
 #     Armários
     armarioGrande(3, 1.05, 3)
     armarioPequeno(5.0, 0.0, -1.5)
@@ -187,7 +185,6 @@ def desenho():
 
     armarioImpressora(-5,0,-3.5)
 #     ventilador(0,0,0)
-#     tv(0,0,0)
 
 
 def iluminacao_da_cena1():

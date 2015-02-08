@@ -17,6 +17,7 @@ from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
+from TV import *
 
 global esquerdaDireita
 global cimaBaixo
@@ -43,8 +44,11 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
 
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
-    glScale(0.6, 0.6, 0.6)
+    glScale(0.7, 0.6, 0.7)
     glRotate(270, 0, 1, 0)
+
+    tv(0,1.6,0)
+
     ##prancha de cima
     glColor3f(0.87, 0.72, 0.53)
     glRotate(90, 0,0,1)

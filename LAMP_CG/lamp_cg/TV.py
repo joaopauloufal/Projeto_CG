@@ -22,6 +22,8 @@ from OpenGL.GLUT import *
 def tv(eixoX, eixoY, eixoZ):
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
+    glScalef(0.5,0.5,0.5)
+
 
     glColor3f(0.8, 0.8, 0.8)
     glPushMatrix()
