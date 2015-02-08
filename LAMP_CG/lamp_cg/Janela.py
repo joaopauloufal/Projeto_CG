@@ -17,31 +17,14 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
-global esquerdaDireita
-global cimaBaixo
-global aux1
-global aux2
-global angulo
 
-
-esquerdaDireita = 0
-cimaBaixo = 0
-aux1 = 0
-aux2 = 0
-aux3 = 0
-aux4 = 0
-angulo = 30
-girarPorta = 0
-
-
-def janela(eixoX, eixoY, eixoZ):
-    global aux1
-    global aux2
-    global tec
-    global girarPorta
+def janela(eixoX, eixoY, eixoZ, angulo):
 
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
+    glRotate(angulo,0,1,0)
+    glScale(0.8, 1.0, 1.0)
+
     #contorno em cima
     glPushMatrix()
     glColor3f(0, 0, 0)
@@ -142,25 +125,3 @@ def vidro(eixoX, eixoY, eixoZ):
     glScale(0.025, 0.5, 0.03)
     glutSolidCube(2)
     glPopMatrix()
-
-
-def Teclado (tecla, x, y):
-    global aux1
-    global aux2
-    global tempoesteira
-    global fire
-    global angulocanhao
-    global girarPorta
-
-    print("*** Tratamento de teclas comuns")
-    print(">>> Tecla: ",tecla)
-
-    if tecla==chr(27): # ESC ?
-        sys.exit(0)
-
-    if tecla == b'a':
-        girarPorta = 120
-    if tecla == b'f':
-        girarPorta = -120
-#     tela()
-    glutPostRedisplay()
