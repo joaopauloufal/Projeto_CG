@@ -158,23 +158,24 @@ def ambiente():
 
 
 def desenho():
-#     ambiente()
-#     estacaoDeTrabalho(4, 0, -3.5)
-#     estacaoDeTrabalho(2.7, 0, -3.5)
-#     estacaoDeTrabalho(1.1, 0, -3.5)
-#     estacaoDeTrabalho(-0.5, 0, -3.5)
-#     estacaoDeTrabalho(-2.1, 0, -3.5)
-#     estacaoDeTrabalho(-3.7, 0, -3.5)
-#     estacaoDeTrabalho(-6.3, 0, -3.5)
-#     estacaoDeTrabalho(-7.9, 0, -3.5)
-#     armarioGrande(3, 1.05, 3)
-#     armarioPequeno(5.0, 0.0, -1.5)
-#     quadroScrum(3, 2, -3.8)
-#     quadroScrum(-2, 2, -3.8)
-#     janela(-3,2,3)
+    ambiente()
+    estacaoDeTrabalho(4, 0, -3.5)
+    estacaoDeTrabalho(2.7, 0, -3.5)
+    estacaoDeTrabalho(1.1, 0, -3.5)
+    estacaoDeTrabalho(-0.5, 0, -3.5)
+    estacaoDeTrabalho(-2.1, 0, -3.5)
+    estacaoDeTrabalho(-3.7, 0, -3.5)
+    estacaoDeTrabalho(-6.3, 0, -3.5)
+    estacaoDeTrabalho(-7.9, 0, -3.5)
+    armarioGrande(3, 1.05, 3)
+    armarioPequeno(5.0, 0.0, -1.5)
+    quadroScrum(3, 2, -3.8)
+    quadroScrum(-2, 2, -3.8)
+#    janela(-3,2,3)
 #     ventilador(0,0,0)
 #     tv(0,0,0)
-    armarioImpressora(0,0,0)
+#    armarioImpressora(0,0,0)
+    
 
 def iluminacao_da_cena1():
 
@@ -257,6 +258,7 @@ def tela():
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
 
     desenho()
+    glutSwapBuffers()
     glFlush()
 
 def TeclasEspeciais (tecla, x, y):
@@ -329,7 +331,7 @@ global distancia
 
 
 glutInit(argv)
-glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
+glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE)
 glutInitWindowSize(600,600)
 glutCreateWindow(b"LAMP")
 distancia = 20
