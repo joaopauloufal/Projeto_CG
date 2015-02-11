@@ -67,6 +67,48 @@ def mesa():
 
     glPopMatrix()
 
+def mesaProf(eixoX, eixoY, eixoZ):
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glTranslate(eixoX, eixoY, eixoZ)  #Transtaçao do objeto
+    glColor3f(.8, 0.8, 0.8) # cor RGB
+
+    # OBJETO 1  mesa (parte do direito)
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glTranslate( 0.9, 0.05, 0.0)  #Transtaçao do objeto
+    glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    glScalef(0.06,0.6,0.75)
+    glutSolidCube(2)  #1cm
+    glPopMatrix()
+
+    # OBJETO 2  mesa (parte do esquerdo)
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glTranslate( -0.9, 0.05, 0.0)  #Transtaçao do objeto
+    glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    glScalef(0.06,0.6,0.75)
+    glutSolidCube(2)  #1cm
+    glPopMatrix()
+
+    # OBJETO 3  mesa (parte de cima)
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glTranslate( 0.0, 0.835, 0.0)  #Transtaçao do objeto
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glScalef(0.06,1.5,0.8)
+    glutSolidCube(2)  #1cm
+    glPopMatrix()
+
+
+    # OBJETO 5  mesa (parte de trás)
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glTranslate( 0.0, 0.2, -0.1)  #Transtaçao do objeto
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glRotatef(90, 0.0, 1.0, 0.0)     #Rotaçao do objeto
+    glScalef(0.06,0.9,0.3)
+    glutSolidCube(2)  #1cm
+    glPopMatrix()
+
+    glPopMatrix()
+
+
 
 def cadeira():
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
@@ -159,7 +201,7 @@ def cadeira():
 
     glPopMatrix()
 
-def computador():
+def computador(verifica):
 
     glPushMatrix()
     glRotate(90, 0, 1, 0)
@@ -173,7 +215,13 @@ def computador():
     glScale(0.1, 1, 1.2)
     glutSolidCube(1.0)
     glPopMatrix()
-
+    if (verifica):
+        glColor3f(0.87, 0.72, 0.53)
+        glPushMatrix()
+        glTranslate(3.08, -0.9, 0.3)
+        glScale(1.5, 0.3, 4.0)
+        glutSolidCube(0.5)
+        glPopMatrix()
 
     glColor3f(0, 0 ,0)
     glPushMatrix()
@@ -222,5 +270,15 @@ def estacaoDeTrabalho(eixoX, eixoY, eixoZ, angulo):
     glScale(0.8, 0.8, 0.8)
     mesa()
     cadeira()
-    computador()
+    computador(False)
+    glPopMatrix()
+
+def estacaoDeTrabalhoProf(eixoX, eixoY, eixoZ, angulo):
+    glPushMatrix()
+    glTranslate(eixoX, eixoY, eixoZ)
+    glRotatef(angulo, 0.0, 1.0, 0.0)     #Rotaçao do objeto
+    glScale(0.8, 0.8, 0.8)
+    mesaProf(0,-0.15,0)
+    cadeira()
+    computador(True)
     glPopMatrix()

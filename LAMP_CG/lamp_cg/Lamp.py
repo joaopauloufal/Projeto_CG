@@ -167,14 +167,16 @@ def desenho():
     estacaoDeTrabalho(-3.7, 0, -3.5, 0)
     estacaoDeTrabalho(-6.3, 0, -3.5, 0)
     estacaoDeTrabalho(-7.9, 0, -3.5, 0)
+    quadroScrum(3, 2, -3.8)
+    quadroScrum(-2, 2, -3.8)
 
 #     Lado esquerdo
     estacaoDeTrabalho(1.1, 0, 3.5, 180)
     estacaoDeTrabalho(-0.5, 0, 3.5, 180)
     estacaoDeTrabalho(-2.1, 0, 3.5, 180)
     estacaoDeTrabalho(-3.7, 0, 3.5, 180)
-#     quadroScrum(3, 2, -3.8)
-#     quadroScrum(-2, 2, -3.8)
+    quadroScrum(1, 2, 3.8)
+    quadroScrum(-3, 2, 3.8)
 
 #     Armários
     armarioGrande(3, 1.05, 3)
@@ -182,9 +184,11 @@ def desenho():
 
     janela(-9.2,2,1.8,90)
     janela(-9.2,2,-1.8,90)
-
+#
     armarioImpressora(-5,0,-3.5)
 #     ventilador(0,0,0)
+    estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
+    estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
 
 
 def iluminacao_da_cena1():
