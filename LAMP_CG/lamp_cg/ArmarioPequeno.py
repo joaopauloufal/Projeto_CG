@@ -36,7 +36,7 @@ angulo = 30
 girarPorta = 0
 
 
-def armarioPequeno(eixoX, eixoY, eixoZ):
+def armarioPequeno(eixoX, eixoY, eixoZ, verificaTV, rotacao):
     global aux1
     global aux2
     global tec
@@ -45,12 +45,17 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
     glPushMatrix()
     glTranslate(eixoX, eixoY, eixoZ)
     glScale(0.7, 0.6, 0.7)
-    glRotate(270, 0, 1, 0)
+    glRotate(rotacao, 0, 1, 0)
 
-    tv(0,1.6,0)
+    if (verificaTV == True):
+        tv(0,1.6,0)
+        glColor3f(0.87, 0.72, 0.53)
+    else:
+        glColor3f(0.8, 0.8, 0.8)
+
+
 
     ##prancha de cima
-    glColor3f(0.87, 0.72, 0.53)
     glRotate(90, 0,0,1)
     glPushMatrix()
     glTranslate(0.75,0,0)
@@ -78,7 +83,6 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
     glPopMatrix()
 
     #prancha de trás
-    glColor3f(0.87, 0.72, 0.53)
     glPushMatrix()
     glRotate(90,0,1,0)
     glTranslate(0.6,0.0,-0.25)
@@ -100,8 +104,8 @@ def armarioPequeno(eixoX, eixoY, eixoZ):
 
 def portaEsquerda():
     #porta esquerda
+#     glColor3f(0.87, 0.72, 0.53)
     glPushMatrix()
-    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,1,0)
     glTranslate(-1,0.5,-0.21)
     glPushMatrix()
@@ -110,7 +114,6 @@ def portaEsquerda():
     glPopMatrix()
 
     #maçaneta
-    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,0,1)
     glTranslate(-0.3,0.1,0.7)
     glutWireTorus(0.04,0.045,30,30)   # rosquinha
@@ -119,9 +122,8 @@ def portaEsquerda():
 
 def portaDireita():
     #porta direita
-#     glTranslate(-0.21,-0.5,0.6)
+#     glColor3f(0.87, 0.72, 0.53)
     glPushMatrix()
-    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,1,0)
     glPushMatrix()
     glScale(0.04, 0.5, 1)
@@ -129,7 +131,6 @@ def portaDireita():
     glPopMatrix()
 
     #maçaneta
-    glColor3f(0.87, 0.72, 0.53)
     glRotate(90,0,0,1)
     glTranslate(0.3,0.1,0.7)
     glutWireTorus(0.04,0.045,30,30)   # rosquinha

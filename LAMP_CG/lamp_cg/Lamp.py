@@ -25,6 +25,7 @@ from Janela import *
 from QuadroScrum import *
 from Ventilador import *
 from ArmarioImpressora import *
+from Porta import *
 
 
 esqdir = 0
@@ -141,6 +142,8 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
 
+    porta(5.35,1.09,2.5,90)
+
 
     #teto
     '''
@@ -169,6 +172,8 @@ def desenho():
     estacaoDeTrabalho(-7.9, 0, -3.5, 0)
     quadroScrum(3, 2, -3.8)
     quadroScrum(-2, 2, -3.8)
+    armarioImpressora(-5,0,-3.5)
+
 
 #     Lado esquerdo
     estacaoDeTrabalho(1.1, 0, 3.5, 180)
@@ -180,15 +185,21 @@ def desenho():
 
 #     Armários
     armarioGrande(3, 1.05, 3)
-    armarioPequeno(5.0, 0.0, -1.5)
+    armarioPequeno(4.5, 0.0, -1.5, True, 270)
+    armarioPequeno(-5.2, 0.0, -1.5, False, 180)
 
+#     Janelas
     janela(-9.2,2,1.8,90)
     janela(-9.2,2,-1.8,90)
-#
-    armarioImpressora(-5,0,-3.5)
-#     ventilador(0,0,0)
+
+#    Ventiladores
+    ventilador(2.0,0.0,3.2)
+    ventilador(-3.0,0.0,3.2)
+
+    #Estação de trabalho do professores
     estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
     estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
+
 
 
 def iluminacao_da_cena1():

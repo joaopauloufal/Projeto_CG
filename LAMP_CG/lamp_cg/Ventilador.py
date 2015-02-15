@@ -33,6 +33,7 @@ def ventilador(eixoX, eixoY, eixoZ):
     glPushMatrix()
     glRotatef(-90, 1.0, 0.0, 0.0)
     glTranslate(eixoX, eixoY, eixoZ)
+    glScalef(0.6,0.6,0.6)
 
     glColor3f(0.8, 0.8, 0.8)
     glPushMatrix()
