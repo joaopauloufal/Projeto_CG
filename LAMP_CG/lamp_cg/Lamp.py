@@ -28,6 +28,18 @@ from ArmarioImpressora import *
 from Porta import *
 
 
+#CameraInicio
+angleX = 0.0
+angleY = 0.0
+directionX = 0.0
+directionZ = -5.0
+directionY = 0.0
+xPos = 0.0
+zPos = 1.0
+yPos = 2.0
+#CameraFim
+
+
 esqdir = 0
 cimabaixo = 0
 aux1 = 0
@@ -266,6 +278,16 @@ def iluminacao_da_cena2():
 
 def tela():
     global angulo
+    #CameraInicio
+    global angleX
+    global angleY
+    global directionX
+    global directionZ
+    global directionY
+    global xPos
+    global zPos
+    global yPos
+    #CameraFim
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # Limpar a tela
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
@@ -277,7 +299,8 @@ def tela():
     glMatrixMode(GL_MODELVIEW) # Especifica sistema de coordenadas do modelo
     glLoadIdentity() # Inicializa sistema de coordenadas do modelo
 
-    gluLookAt(sin(esqdir) * 10, 0 + cimabaixo, cos(esqdir) * 10, 0, 0, 0, 0, 1,0) # Especifica posição do observador e do alvo
+#     gluLookAt(sin(esqdir) * 10, 0 + cimabaixo, cos(esqdir) * 10, 0, 0, 0, 0, 1,0) # Especifica posição do observador e do alvo
+    gluLookAt(xPos, yPos, zPos, xPos+directionX, yPos+directionY, zPos+directionZ, 0, 1, 0);
     iluminacao_da_cena1()
     #iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
@@ -314,21 +337,53 @@ def Teclado(tecla, x ,y):
     global aux1
     global aux2
     global cam
+    #CameraInicio
+    global angleX
+    global angleY
+    global directionX
+    global directionZ
+    global directionY
+    global xPos
+    global zPos
+    global yPos
+    fraction = 0.3
+    #CameraFim
 
     if tecla == b'a':  # tecla A
-        aux1 = aux1 + 0.1
-
+        angleY = angleY - 0.05
+        directionX = sin(angleY)
+        directionZ = -cos(angleY)
 
     if tecla == b'd': # tecla D
-        aux1 = aux1 - 0.1
-
+        angleY = angleY + 0.05
+        directionX = sin(angleY);
+        directionZ = -cos(angleY);
 
     if tecla == b'w': # tecla W
-        aux2 = aux2 - 0.1
+        xPos = xPos + (directionX * fraction)
+        zPos = zPos + (directionZ * fraction)
+        yPos = yPos + (directionY * fraction)
 
 
     if tecla == b's': # tecla S
-        aux2 = aux2 + 0.1
+        xPos = xPos - (directionX * fraction)
+        zPos = zPos - (directionZ * fraction)
+        yPos = yPos - (directionY * fraction)
+
+#     if tecla == b'a':  # tecla A
+#         aux1 = aux1 + 0.1
+#
+#
+#     if tecla == b'd': # tecla D
+#         aux1 = aux1 - 0.1
+#
+#
+#     if tecla == b'w': # tecla W
+#         aux2 = aux2 - 0.1
+#
+#
+#     if tecla == b's': # tecla S
+#         aux2 = aux2 + 0.1
 
     tela()
     glutPostRedisplay()
