@@ -26,16 +26,17 @@ from QuadroScrum import *
 from Ventilador import *
 from ArmarioImpressora import *
 from Porta import *
+from Mesa import *
 
 
 #CameraInicio
 angleX = 0.0
-angleY = 0.0
+angleY = -1.65
 directionX = 0.0
 directionZ = -5.0
 directionY = 0.0
-xPos = 0.0
-zPos = 1.0
+xPos = 8.0
+zPos = 2.2
 yPos = 2.0
 #CameraFim
 
@@ -211,7 +212,7 @@ def desenho():
     #Estação de trabalho do professores
     estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
     estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
-
+    mesa(0,0,0,0)
 
 
 def iluminacao_da_cena1():
@@ -300,9 +301,9 @@ def tela():
     glLoadIdentity() # Inicializa sistema de coordenadas do modelo
 
 #     gluLookAt(sin(esqdir) * 10, 0 + cimabaixo, cos(esqdir) * 10, 0, 0, 0, 0, 1,0) # Especifica posição do observador e do alvo
-    gluLookAt(xPos, yPos, zPos, xPos+directionX, yPos+directionY, zPos+directionZ, 0, 1, 0);
+    gluLookAt(xPos, yPos, zPos, xPos+directionX, yPos+directionY, zPos+directionZ, 0, 1, 0); #Para andar
     iluminacao_da_cena1()
-    #iluminacao_da_cena2()
+#     iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
 
     desenho()
