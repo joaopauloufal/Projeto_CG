@@ -17,6 +17,7 @@ from math import pi
 from math import sin
 import numpy
 from sys import argv
+import time
 
 from ArmarioGrande import *
 from ArmarioPequeno import *
@@ -51,6 +52,14 @@ angulo = 45
 textura1 = None
 texturaPiso = Image.open("images/piso.jpg", "r")
 texturaParedes = Image.open("images/parede_branca.jpg", "r")
+
+
+#Melhorar cena
+global objCompilado
+global tempo,quadro,var
+tempo = 0
+quadro = 0
+var = 0
 
 def eixos():
 
@@ -156,10 +165,10 @@ def ambiente():
     glPopMatrix()
 
     porta(5.35,1.09,2.5,90)
-    
+
     #textura parede1
     glPushMatrix()
-    
+
     carrega_imagem(texturaParedes)
     glEnable(GL_TEXTURE_2D)
     glTranslate(-1.9, 1.44, 3.88)
@@ -167,21 +176,21 @@ def ambiente():
     glScalef(0, 2.19, 7.28)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
-    glTexCoord2f(1.0, 0.0) 
+    glTexCoord2f(1.0, 0.0)
     glVertex3f(1.0, -1.0, -1.0)
 
-    glTexCoord2f(1.0, 1.0) 
+    glTexCoord2f(1.0, 1.0)
     glVertex3f( 1.0,  1.0, -1.0)
 
-    glTexCoord2f(0.0, 1.0) 
+    glTexCoord2f(0.0, 1.0)
     glVertex3f( 1.0,  1.0,  1.0)
 
-    glTexCoord2f(0.0, 0.0) 
+    glTexCoord2f(0.0, 0.0)
     glVertex3f(1.0, -1.0,  1.0)
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
-    
+
     #textura parede2
     glPushMatrix()
     carrega_imagem(texturaParedes)
@@ -191,21 +200,21 @@ def ambiente():
     glScalef(0, 2.19, 7.28)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
-    glTexCoord2f(1.0, 0.0) 
+    glTexCoord2f(1.0, 0.0)
     glVertex3f(1.0, -1.0, -1.0)
 
-    glTexCoord2f(1.0, 1.0) 
+    glTexCoord2f(1.0, 1.0)
     glVertex3f( 1.0,  1.0, -1.0)
 
-    glTexCoord2f(0.0, 1.0) 
+    glTexCoord2f(0.0, 1.0)
     glVertex3f( 1.0,  1.0,  1.0)
 
-    glTexCoord2f(0.0, 0.0) 
+    glTexCoord2f(0.0, 0.0)
     glVertex3f(1.0, -1.0,  1.0)
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
-    
+
     #textura parede3
     glPushMatrix()
     carrega_imagem(texturaParedes)
@@ -215,21 +224,21 @@ def ambiente():
     glScalef(0, 2.19, 4)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
-    glTexCoord2f(1.0, 0.0) 
+    glTexCoord2f(1.0, 0.0)
     glVertex3f(1.0, -1.0, -1.0)
 
-    glTexCoord2f(1.0, 1.0) 
+    glTexCoord2f(1.0, 1.0)
     glVertex3f( 1.0,  1.0, -1.0)
 
-    glTexCoord2f(0.0, 1.0) 
+    glTexCoord2f(0.0, 1.0)
     glVertex3f( 1.0,  1.0,  1.0)
 
-    glTexCoord2f(0.0, 0.0) 
+    glTexCoord2f(0.0, 0.0)
     glVertex3f(1.0, -1.0,  1.0)
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
-    
+
     #textura piso
     glPushMatrix()
     carrega_imagem(texturaPiso)
@@ -239,22 +248,22 @@ def ambiente():
     glScalef(0, 7.35, 4)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
-    glTexCoord2f(1.0, 0.0) 
+    glTexCoord2f(1.0, 0.0)
     glVertex3f(1.0, -1.0, -1.0)
 
-    glTexCoord2f(1.0, 1.0) 
+    glTexCoord2f(1.0, 1.0)
     glVertex3f( 1.0,  1.0, -1.0)
 
-    glTexCoord2f(0.0, 1.0) 
+    glTexCoord2f(0.0, 1.0)
     glVertex3f( 1.0,  1.0,  1.0)
 
-    glTexCoord2f(0.0, 0.0) 
+    glTexCoord2f(0.0, 0.0)
     glVertex3f(1.0, -1.0,  1.0)
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
-    
-    
+
+
 
 
     #teto
@@ -377,6 +386,15 @@ def iluminacao_da_cena2():
 
 
 def tela():
+    global tempo,quadro,var
+    tempo=int(time.clock())
+    quadro+=1
+    if tempo==var:
+        print "fps:",quadro
+        quadro=0
+        var+=1
+
+
     global angulo
     #CameraInicio
     global angleX
@@ -388,6 +406,9 @@ def tela():
     global zPos
     global yPos
     #CameraFim
+
+    global objCompilado
+
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # Limpar a tela
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
@@ -405,9 +426,11 @@ def tela():
 #     iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
 
-    desenho()
+
+    glCallList(objCompilado)
+#     desenho()
     glutSwapBuffers()
-    glFlush()
+#     glFlush()
 
 def TeclasEspeciais (tecla, x, y):
     global esqdir
@@ -448,7 +471,7 @@ def Teclado(tecla, x ,y):
     global yPos
     fraction = 0.3
     #CameraFim
-    
+
     if tecla == b'a':  # tecla A
         angleY = angleY - 0.05
         directionX = sin(angleY)
@@ -469,7 +492,7 @@ def Teclado(tecla, x ,y):
         xPos = xPos - (directionX * fraction)
         zPos = zPos - (directionZ * fraction)
         yPos = yPos - (directionY * fraction)
-    
+
 
     tela()
     glutPostRedisplay()
@@ -493,6 +516,14 @@ def ControleMouse(button, state, x, y):
     glutPostRedisplay()
 
 
+def init():
+    global objCompilado
+    objCompilado = glGenLists(1)
+    glNewList(objCompilado, GL_COMPILE)
+    desenho()
+    glEndList()
+
+
 global distancia
 
 
@@ -505,4 +536,5 @@ glutDisplayFunc(tela)
 glutMouseFunc(ControleMouse)
 glutKeyboardFunc(Teclado)
 glutSpecialFunc(TeclasEspeciais)
+init()
 glutMainLoop()
