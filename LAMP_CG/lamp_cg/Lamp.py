@@ -49,6 +49,8 @@ aux3 = 0
 aux4 = 0
 angulo = 45
 textura1 = None
+texturaPiso = Image.open("images/piso.jpg", "r")
+texturaParedes = Image.open("images/parede_branca.jpg", "r")
 
 def eixos():
 
@@ -84,10 +86,8 @@ def testa_imagem():
     im = Image.open(img_filename)
     im.show()
 
-def carrega_imagem():
+def carrega_imagem(im):
     global textura1
-
-    im = Image.open("images/parede_branca.jpg", "r")
     try:
         ix, iy, image = im.size[0], im.size[1], im.tostring("raw", "RGBA", 0, -1)
     except SystemError:
@@ -98,9 +98,9 @@ def carrega_imagem():
 
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)  #repetir textura na horiz
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT) #repetir textura na vertical
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT)
+    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)  #repetir textura na horiz
+    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT) #repetir textura na vertical
+    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL) # somente textura
     #glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE) # textura + cor
 
@@ -156,6 +156,105 @@ def ambiente():
     glPopMatrix()
 
     porta(5.35,1.09,2.5,90)
+    
+    #textura parede1
+    glPushMatrix()
+    
+    carrega_imagem(texturaParedes)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(-1.9, 1.44, 3.88)
+    glRotate(90, 0, 1, 0)
+    glScalef(0, 2.19, 7.28)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0) 
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0) 
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0) 
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0) 
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+    
+    #textura parede2
+    glPushMatrix()
+    carrega_imagem(texturaParedes)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(-1.9, 1.44, -3.88)
+    glRotate(90, 0, 1, 0)
+    glScalef(0, 2.19, 7.28)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0) 
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0) 
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0) 
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0) 
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+    
+    #textura parede3
+    glPushMatrix()
+    carrega_imagem(texturaParedes)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(-9.18, 1.44, 0)
+    #glRotate(90, 0, 1, 0)
+    glScalef(0, 2.19, 4)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0) 
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0) 
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0) 
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0) 
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+    
+    #textura piso
+    glPushMatrix()
+    carrega_imagem(texturaPiso)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(-1.9, -0.72, 0)
+    glRotate(90, 0, 0, 1)
+    glScalef(0, 7.35, 4)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0) 
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0) 
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0) 
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0) 
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+    
+    
 
 
     #teto
@@ -202,8 +301,8 @@ def desenho():
     armarioPequeno(-5.2, 0.0, -1.5, False, 180)
 
 #     Janelas
-    janela(-9.2,2,1.8,90)
-    janela(-9.2,2,-1.8,90)
+    janela(-9.0,2,1.8,90)
+    janela(-9.0,2,-1.8,90)
 
 #    Ventiladores
     ventilador(2.0,0.0,3.2)
@@ -349,7 +448,7 @@ def Teclado(tecla, x ,y):
     global yPos
     fraction = 0.3
     #CameraFim
-
+    
     if tecla == b'a':  # tecla A
         angleY = angleY - 0.05
         directionX = sin(angleY)
@@ -370,21 +469,7 @@ def Teclado(tecla, x ,y):
         xPos = xPos - (directionX * fraction)
         zPos = zPos - (directionZ * fraction)
         yPos = yPos - (directionY * fraction)
-
-#     if tecla == b'a':  # tecla A
-#         aux1 = aux1 + 0.1
-#
-#
-#     if tecla == b'd': # tecla D
-#         aux1 = aux1 - 0.1
-#
-#
-#     if tecla == b'w': # tecla W
-#         aux2 = aux2 - 0.1
-#
-#
-#     if tecla == b's': # tecla S
-#         aux2 = aux2 + 0.1
+    
 
     tela()
     glutPostRedisplay()
