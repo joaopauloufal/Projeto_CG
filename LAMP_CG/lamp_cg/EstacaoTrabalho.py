@@ -5,6 +5,7 @@ Created on 13/01/2015
 
 @author: grupoLAMP
 '''
+import Image
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
@@ -12,8 +13,12 @@ import ctypes
 from math import cos
 from math import pi
 from math import sin
-# from numpy import angle
 from sys import argv
+from Textura import *
+
+
+# from numpy import angle
+texturaTela = Image.open("images/ubuntu.png", "r")
 
 def mesa():
     glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
@@ -202,6 +207,29 @@ def cadeira():
     glPopMatrix()
 
 def computador(verifica):
+    glPushMatrix()
+    glPushMatrix()
+    carrega_imagem(texturaTela)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(0, 1.42, 0.033)
+    glRotate(270, 0, 1, 0)
+    glScalef(0, 0.27, 0.32)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0)
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0)
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0)
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0)
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
 
     glPushMatrix()
     glRotate(90, 0, 1, 0)
@@ -260,6 +288,7 @@ def computador(verifica):
     glTranslate(2.4, -1, -1.1)
     glScale(1, 0.5, 0.8)
     glutSolidSphere(0.1, 40, 40)
+    glPopMatrix()
     glPopMatrix()
     glPopMatrix()
 
