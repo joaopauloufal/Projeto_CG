@@ -28,6 +28,7 @@ from Ventilador import *
 from ArmarioImpressora import *
 from Porta import *
 from Mesa import *
+from Textura import *
 
 
 #CameraInicio
@@ -84,41 +85,6 @@ def eixos():
     glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
     glutSolidCylinder(0.01, 4.0, 4, 10)
     glPopMatrix()
-
-def testa_imagem():
-
-    diretorioatual = sys.path[0]
-    print(diretorioatual)
-
-    img_filename = diretorioatual + "images/parede_branca.jpg"
-    print(img_filename)
-    im = Image.open(img_filename)
-    im.show()
-
-def carrega_imagem(im):
-    global textura1
-    try:
-        ix, iy, image = im.size[0], im.size[1], im.tostring("raw", "RGBA", 0, -1)
-    except SystemError:
-        ix, iy, image = im.size[0], im.size[1], im.tostring("raw", "RGBX", 0, -1)
-
-    textura1 = glGenTextures(1)
-    glBindTexture(GL_TEXTURE_2D, textura1)
-
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)  #repetir textura na horiz
-    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT) #repetir textura na vertical
-    #glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT)
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL) # somente textura
-    #glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE) # textura + cor
-
-    glTexImage2D(
-      GL_TEXTURE_2D, 0, 3, ix, iy, 0,
-      GL_RGBA, GL_UNSIGNED_BYTE, image
-    )
-
-
 
 def ambiente():
     global textura1
@@ -291,8 +257,8 @@ def desenho():
     estacaoDeTrabalho(-3.7, 0, -3.5, 0)
     estacaoDeTrabalho(-6.3, 0, -3.5, 0)
     estacaoDeTrabalho(-7.9, 0, -3.5, 0)
-    quadroScrum(3, 2, -3.8)
-    quadroScrum(-2, 2, -3.8)
+    quadroScrum(3, 2, -3.8,0, True)
+    quadroScrum(-2, 2, -3.8,0, False)
     armarioImpressora(-5,0,-3.5)
 
 
@@ -301,8 +267,8 @@ def desenho():
     estacaoDeTrabalho(-0.5, 0, 3.5, 180)
     estacaoDeTrabalho(-2.1, 0, 3.5, 180)
     estacaoDeTrabalho(-3.7, 0, 3.5, 180)
-    quadroScrum(1, 2, 3.8)
-    quadroScrum(-3, 2, 3.8)
+    quadroScrum(1, 2, -3.8,180, True)
+    quadroScrum(-3, 2, -3.8,180, False)
 
 #     Armários
     armarioGrande(3, 1.05, 3)
