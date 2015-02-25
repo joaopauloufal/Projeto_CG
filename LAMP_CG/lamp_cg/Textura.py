@@ -15,7 +15,7 @@ import ctypes
 from math import cos
 from math import pi
 from math import sin
-import numpy
+# import numpy
 from sys import argv
 import time
 

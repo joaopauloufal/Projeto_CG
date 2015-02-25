@@ -29,10 +29,14 @@ angulo = 30
 girarPorta = 0
 
 
-def ventilador(eixoX, eixoY, eixoZ):
+def ventilador(eixoX, eixoY, eixoZ, rotacao):
+    glPushMatrix()
+#     glRotatef(45, 0.0, 1.0, 0.0)
+    glTranslate(eixoX, eixoY, eixoZ)
+    glRotatef(rotacao, 0.0, 1.0, 0.0)
+
     glPushMatrix()
     glRotatef(-90, 1.0, 0.0, 0.0)
-    glTranslate(eixoX, eixoY, eixoZ)
     glScalef(0.6,0.6,0.6)
 
     glColor3f(0.8, 0.8, 0.8)
@@ -62,5 +66,6 @@ def ventilador(eixoX, eixoY, eixoZ):
     glutSolidCylinder(0.05, 1.2, 30, 30)
     glPopMatrix()
 
+    glPopMatrix()
     glPopMatrix()
 

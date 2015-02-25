@@ -15,7 +15,7 @@ import ctypes
 from math import cos
 from math import pi
 from math import sin
-import numpy
+# import numpy
 from sys import argv
 import time
 
@@ -54,13 +54,20 @@ textura1 = None
 texturaPiso = Image.open("images/piso.jpg", "r")
 texturaParedes = Image.open("images/parede_branca.jpg", "r")
 
-
+objAnimadoCompil=0
 #Melhorar cena
 global objCompilado
 global tempo,quadro,var
 tempo = 0
 quadro = 0
 var = 0
+
+
+#Animação
+global ventLigDesl
+global ventAnimado
+ventAnimado = 0
+ventLigDesl = False
 
 def eixos():
 
@@ -280,14 +287,27 @@ def desenho():
     janela(-9.0,2,-1.8,90)
 
 #    Ventiladores
-    ventilador(2.0,0.0,3.2)
-    ventilador(-3.0,0.0,3.2)
+#     ventilador(3.0,3.0,0.0, 0)
+#     ventilador(-3.0,3.0,0.0, 0)
 
     #Estação de trabalho do professores
     estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
     estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
     mesa(0,0,0,0)
-
+    
+def desenhoAnimado():
+    #todas as animacoes
+    global ventAnimado
+    global objAnimadoCompil
+    
+    glNewList(objAnimadoCompil, GL_COMPILE)
+    if (ventAnimado == 90):
+        ventAnimado = 0
+    ventilador(3.0,3.0,0.0, ventAnimado)
+    ventilador(-3.0,3.0,0.0, ventAnimado)
+    ventAnimado = ventAnimado + 5
+    glEndList()
+    print 'szd', ventAnimado
 
 def iluminacao_da_cena1():
 
@@ -374,8 +394,12 @@ def tela():
     #CameraFim
 
     global objCompilado
+    
+    #Ventilador animado
+    global ventLigDesl
+    global objAnimadoCompil
 
-
+    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # Limpar a tela
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
     glMatrixMode(GL_PROJECTION) # Muda a matriz de projeçao
@@ -391,9 +415,14 @@ def tela():
     iluminacao_da_cena1()
 #     iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
-
-
+    print "Ventiliga: ", ventLigDesl
+    
+    
     glCallList(objCompilado)
+    glCallList(objAnimadoCompil)
+    print 'obj',objAnimadoCompil
+    if (ventLigDesl == True):
+        desenhoAnimado()
 #     desenho()
     glutSwapBuffers()
 #     glFlush()
@@ -437,6 +466,9 @@ def Teclado(tecla, x ,y):
     global yPos
     fraction = 0.3
     #CameraFim
+    
+    #Ventilador animado
+    global ventLigDesl
 
     if tecla == b'a':  # tecla A
         angleY = angleY - 0.05
@@ -458,7 +490,9 @@ def Teclado(tecla, x ,y):
         xPos = xPos - (directionX * fraction)
         zPos = zPos - (directionZ * fraction)
         yPos = yPos - (directionY * fraction)
-
+        
+    if tecla == b'p': # tecla S
+        ventLigDesl = True
 
     tela()
     glutPostRedisplay()
@@ -483,12 +517,18 @@ def ControleMouse(button, state, x, y):
 
 
 def init():
-    global objCompilado
+    global objCompilado,objAnimadoCompil
     objCompilado = glGenLists(1)
+    
     glNewList(objCompilado, GL_COMPILE)
     desenho()
     glEndList()
+    objAnimadoCompil = glGenLists(2)
+    desenhoAnimado()
 
+def animar():
+    print 'animação'
+    glutPostRedisplay()
 
 global distancia
 
@@ -499,6 +539,7 @@ glutInitWindowSize(600,600)
 glutCreateWindow(b"LAMP")
 distancia = 20
 glutDisplayFunc(tela)
+glutIdleFunc(animar)
 glutMouseFunc(ControleMouse)
 glutKeyboardFunc(Teclado)
 glutSpecialFunc(TeclasEspeciais)
