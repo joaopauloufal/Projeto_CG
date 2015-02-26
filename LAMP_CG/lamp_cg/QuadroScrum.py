@@ -36,7 +36,7 @@ def quadroScrum(eixoX, eixoY, eixoZ, rotacao, imagem):
     glutSolidCube(0.5)
     glPopMatrix()
 
-        #textura parede1
+    #textura Scrun
     glPushMatrix()
     if (imagem == True):
         carrega_imagem(texturaScrumA)

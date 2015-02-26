@@ -294,12 +294,12 @@ def desenho():
     estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
     estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
     mesa(0,0,0,0)
-    
-def desenhoAnimado():
+
+def ventiladorAnimado():
     #todas as animacoes
     global ventAnimado
     global objAnimadoCompil
-    
+
     glNewList(objAnimadoCompil, GL_COMPILE)
     if (ventAnimado == 90):
         ventAnimado = 0
@@ -307,7 +307,6 @@ def desenhoAnimado():
     ventilador(-3.0,3.0,0.0, ventAnimado)
     ventAnimado = ventAnimado + 5
     glEndList()
-    print 'szd', ventAnimado
 
 def iluminacao_da_cena1():
 
@@ -394,12 +393,12 @@ def tela():
     #CameraFim
 
     global objCompilado
-    
+
     #Ventilador animado
     global ventLigDesl
     global objAnimadoCompil
 
-    
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # Limpar a tela
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
     glMatrixMode(GL_PROJECTION) # Muda a matriz de projeçao
@@ -415,14 +414,11 @@ def tela():
     iluminacao_da_cena1()
 #     iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
-    print "Ventiliga: ", ventLigDesl
-    
-    
+
     glCallList(objCompilado)
     glCallList(objAnimadoCompil)
-    print 'obj',objAnimadoCompil
     if (ventLigDesl == True):
-        desenhoAnimado()
+        ventiladorAnimado()
 #     desenho()
     glutSwapBuffers()
 #     glFlush()
@@ -466,7 +462,7 @@ def Teclado(tecla, x ,y):
     global yPos
     fraction = 0.3
     #CameraFim
-    
+
     #Ventilador animado
     global ventLigDesl
 
@@ -490,9 +486,12 @@ def Teclado(tecla, x ,y):
         xPos = xPos - (directionX * fraction)
         zPos = zPos - (directionZ * fraction)
         yPos = yPos - (directionY * fraction)
-        
-    if tecla == b'p': # tecla S
-        ventLigDesl = True
+
+    if tecla == b'v': # tecla S
+        if (ventLigDesl == False):
+            ventLigDesl = True
+        else:
+            ventLigDesl = False
 
     tela()
     glutPostRedisplay()
@@ -519,15 +518,14 @@ def ControleMouse(button, state, x, y):
 def init():
     global objCompilado,objAnimadoCompil
     objCompilado = glGenLists(1)
-    
+
     glNewList(objCompilado, GL_COMPILE)
     desenho()
     glEndList()
     objAnimadoCompil = glGenLists(2)
-    desenhoAnimado()
+    ventiladorAnimado()
 
 def animar():
-    print 'animação'
     glutPostRedisplay()
 
 global distancia

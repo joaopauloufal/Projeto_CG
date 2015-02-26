@@ -1,22 +1,24 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# Autor: Danilo Victor Barbosa da Costa
-
+# -*- encoding: utf-8 -*-
+# Autor: João Paulo Ferreira da Silva
+#        Danilo Victor Barbosa da Costa
+#        Roberto Bartolomeu
 '''
-Created on 13/01/2015
-
-@author: grupoLAMP
+ ====== LAMP ===
+ Projeto de Computação Gráfica
 '''
-from math import cos
-from math import pi
-from math import sin
-import timeit
-import ctypes
-import random
-from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
+from PIL import Image, ImageFilter
+import PIL
+import ctypes
+from math import cos
+from math import pi
+from math import sin
+# import numpy
+from sys import argv
+import time
+from Textura import *
 
 global aux1
 global aux2
@@ -91,6 +93,7 @@ def armarioGrande(eixoX, eixoY, eixoZ):
             portaEsquerda()
             glPopMatrix()
     glPopMatrix()
+
 
     #Coluna entre portas esquerda
     glPushMatrix()
