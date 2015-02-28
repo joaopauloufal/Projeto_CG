@@ -275,8 +275,7 @@ def desenho():
     estacaoDeTrabalho(-2.1, 0, 3.5, 180)
     estacaoDeTrabalho(-3.7, 0, 3.5, 180)
     quadroScrum(1, 2, -3.8,180, True)
-    quadroScrum(-3, 2, -3.8,180, False)
-
+    
 #     Armários
     armarioGrande(3, 1.05, 3)
     armarioPequeno(4.5, 0.0, -1.5, True, 270)
@@ -411,9 +410,10 @@ def tela():
 
 #     gluLookAt(sin(esqdir) * 10, 0 + cimabaixo, cos(esqdir) * 10, 0, 0, 0, 0, 1,0) # Especifica posição do observador e do alvo
     gluLookAt(xPos, yPos, zPos, xPos+directionX, yPos+directionY, zPos+directionZ, 0, 1, 0); #Para andar
-    iluminacao_da_cena1()
-#     iluminacao_da_cena2()
+#    iluminacao_da_cena1()
+    iluminacao_da_cena2()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
+    glEnable(GL_NORMALIZE)
 
     glCallList(objCompilado)
     glCallList(objAnimadoCompil)
