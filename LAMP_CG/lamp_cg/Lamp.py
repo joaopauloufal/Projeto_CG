@@ -275,7 +275,7 @@ def desenho():
     estacaoDeTrabalho(-2.1, 0, 3.5, 180)
     estacaoDeTrabalho(-3.7, 0, 3.5, 180)
     quadroScrum(1, 2, -3.8,180, True)
-    
+
 #     Armários
     armarioGrande(3, 1.05, 3)
     armarioPequeno(4.5, 0.0, -1.5, True, 270)
@@ -285,14 +285,24 @@ def desenho():
     janela(-9.0,2,1.8,90)
     janela(-9.0,2,-1.8,90)
 
-#    Ventiladores
-#     ventilador(3.0,3.0,0.0, 0)
-#     ventilador(-3.0,3.0,0.0, 0)
-
-    #Estação de trabalho do professores
+#     Estação de trabalho do professores
     estacaoDeTrabalhoProf(-5.2,0,2.62,-90)
     estacaoDeTrabalhoProf(-5.2,0,0.2,-90)
+
+#     Mesa e cadeiras pretas
     mesa(0,0,0,0)
+    cadeiraPreta(-2.5,0,0,-90)
+    cadeiraPreta(2.5,0,0,90)
+
+    cadeiraPreta(1.8,0,1.0,15)
+    cadeiraPreta(0.7,0,1.4,15)
+    cadeiraPreta(-1.8,0,1.0,-15)
+    cadeiraPreta(-0.7,0,1.4,-15)
+
+    cadeiraPreta(1.8,0,-1.0,165)
+    cadeiraPreta(0.7,0,-1.4,165)
+    cadeiraPreta(-1.8,0,-1.0,-165)
+    cadeiraPreta(-0.7,0,-1.4,-165)
 
 def ventiladorAnimado():
     #todas as animacoes
