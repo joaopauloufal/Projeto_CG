@@ -96,7 +96,6 @@ def eixos():
 def ambiente():
     global textura1
     #piso
-
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
@@ -111,8 +110,8 @@ def ambiente():
     #glEnable(GL_TEXTURE_2D)
     glPushMatrix()
     glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(-2.0, 3.975, -1.35)  #Transtaçao do objeto
-    glScale(16.4, 0.2, 5.0)
+    glTranslate(-2.0, 3.975, -1.9)  #Transtaçao do objeto
+    glScale(16.4, 0.2, 5.9)
     glutSolidCube(0.9)
     glPopMatrix()
     #glDisable(GL_TEXTURE_2D)
@@ -123,8 +122,8 @@ def ambiente():
 
     glPushMatrix()
     glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(-2.0, -3.975, -1.35)  #Transtaçao do objeto
-    glScale(16.4, 0.2, 5.0)
+    glTranslate(-2.0, -3.975, -1.9)  #Transtaçao do objeto
+    glScale(16.4, 0.2, 5.9)
     glutSolidCube(0.9)
     glPopMatrix()
 
@@ -132,8 +131,34 @@ def ambiente():
     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
-    glTranslate(1.35, 9.28, 0.0)  #Transtaçao do objeto
-    glScale(5.0, 0.2, 9.0)
+    glTranslate(1.9, 9.28, 0.0)  #Transtaçao do objeto
+    glScale(5.9, 0.2, 9.0)
+    glutSolidCube(0.9)
+    glPopMatrix()
+
+#     #parede4
+#     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
+#     glPushMatrix()
+#     glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+#     glTranslate(1.9, 9.28, 0.0)  #Transtaçao do objeto
+#     glScale(5.9, 0.2, 9.0)
+#     glutSolidCube(0.9)
+#     glPopMatrix()
+
+#     Ar
+    glColor3f(1, 1, 1) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glTranslate(3.9, 9.0, 0.0)  #Transtaçao do objeto
+    glScale(0.6, 0.55, 2.5)
+    glutSolidCube(0.9)
+    glPopMatrix()
+
+    glColor3f(0.01, 0.01, 0.01) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glTranslate(3.9, 8.75, 0.0)  #Transtaçao do objeto
+    glScale(0.05, 0.02, 2.5)
     glutSolidCube(0.9)
     glPopMatrix()
 
@@ -144,9 +169,9 @@ def ambiente():
 
     carrega_imagem(texturaParedes)
     glEnable(GL_TEXTURE_2D)
-    glTranslate(-1.9, 1.44, 3.88)
+    glTranslate(-1.9, 2.0, 3.88)
     glRotate(90, 0, 1, 0)
-    glScalef(0, 2.19, 7.28)
+    glScalef(0, 2.8, 7.28)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
     glTexCoord2f(1.0, 0.0)
@@ -168,9 +193,9 @@ def ambiente():
     glPushMatrix()
     carrega_imagem(texturaParedes)
     glEnable(GL_TEXTURE_2D)
-    glTranslate(-1.9, 1.44, -3.88)
+    glTranslate(-1.9, 2.0, -3.88)
     glRotate(90, 0, 1, 0)
-    glScalef(0, 2.19, 7.28)
+    glScalef(0, 2.8, 7.28)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
     glTexCoord2f(1.0, 0.0)
@@ -192,9 +217,9 @@ def ambiente():
     glPushMatrix()
     carrega_imagem(texturaParedes)
     glEnable(GL_TEXTURE_2D)
-    glTranslate(-9.18, 1.44, 0)
+    glTranslate(-9.18, 2.0, 0)
     #glRotate(90, 0, 1, 0)
-    glScalef(0, 2.19, 4)
+    glScalef(0, 2.8, 4)
     glBegin(GL_QUADS)
     glColor3f(1,1,1)
     glTexCoord2f(1.0, 0.0)
@@ -236,21 +261,14 @@ def ambiente():
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
 
-
-
-
     #teto
-    '''
-    glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
+    glColor3f(1, 1, 1) # cor RGB  eixo X
     glPushMatrix()
     glRotatef(90, 0.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate(0.04, 3.6, 0.0)  #Transtaçao do objeto
-    glScale(12.0, 0.2, 9.05)
+    glTranslate(-2.00, 4.5, 0.0)  #Transtaçao do objeto
+    glScale(16.5, 0.2, 9.0)
     glutSolidCube(0.9)
     glPopMatrix()
-    '''
-
-
 
 
 def desenho():
@@ -312,8 +330,8 @@ def ventiladorAnimado():
     glNewList(objAnimadoCompil, GL_COMPILE)
     if (ventAnimado == 90):
         ventAnimado = 0
-    ventilador(3.0,3.0,0.0, ventAnimado)
-    ventilador(-3.0,3.0,0.0, ventAnimado)
+    ventilador(3.0,3.5,0.0, ventAnimado)
+    ventilador(-3.0,3.5,0.0, ventAnimado)
     ventAnimado = ventAnimado + 5
     glEndList()
 
