@@ -136,14 +136,23 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
 
-#     #parede4
-#     glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
-#     glPushMatrix()
-#     glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
-#     glTranslate(1.9, 9.28, 0.0)  #Transtaçao do objeto
-#     glScale(5.9, 0.2, 9.0)
-#     glutSolidCube(0.9)
-#     glPopMatrix()
+    #parede4 parte grande
+    glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glTranslate(1.9, -5.50, -0.9)  #Transtaçao do objeto
+    glScale(5.9, 0.2, 6.8)
+    glutSolidCube(0.9)
+    glPopMatrix()
+
+    #parede4 parte pequena
+    glColor3f(0.98, 0.98, 0.98) # cor RGB  eixo X
+    glPushMatrix()
+    glRotatef(90, 0.0, 0.0, 1.0)     #Rotaçao do objeto
+    glTranslate(3.7, -5.50, 3.0)  #Transtaçao do objeto
+    glScale(1.8, 0.2, 2.2)
+    glutSolidCube(0.9)
+    glPopMatrix()
 
 #     Ar
     glColor3f(1, 1, 1) # cor RGB  eixo X
@@ -162,7 +171,7 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
 
-    porta(5.35,1.09,2.5,90)
+    porta(5.35,1.09,3.0,90)
 
     #textura parede1
     glPushMatrix()
@@ -236,6 +245,55 @@ def ambiente():
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glPopMatrix()
+
+    #textura parede4 parte grande
+    glPushMatrix()
+    carrega_imagem(texturaParedes)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(5.35, 1.9, -0.95)  #Transtaçao do objeto
+    #glRotate(90, 0, 1, 0)
+    glScalef(0, 2.55, 3.1)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0)
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0)
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0)
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0)
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+
+    #textura parede4 parte pequena
+    glPushMatrix()
+    carrega_imagem(texturaParedes)
+    glEnable(GL_TEXTURE_2D)
+    glTranslate(5.35, 3.7, 2.9)  #Transtaçao do objeto
+    #glRotate(90, 0, 1, 0)
+    glScalef(0, 0.8, 1.1)
+    glBegin(GL_QUADS)
+    glColor3f(1,1,1)
+    glTexCoord2f(1.0, 0.0)
+    glVertex3f(1.0, -1.0, -1.0)
+
+    glTexCoord2f(1.0, 1.0)
+    glVertex3f( 1.0,  1.0, -1.0)
+
+    glTexCoord2f(0.0, 1.0)
+    glVertex3f( 1.0,  1.0,  1.0)
+
+    glTexCoord2f(0.0, 0.0)
+    glVertex3f(1.0, -1.0,  1.0)
+    glEnd()
+    glDisable(GL_TEXTURE_2D)
+    glPopMatrix()
+
 
     #textura piso
     glPushMatrix()
