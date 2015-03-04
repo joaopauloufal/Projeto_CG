@@ -108,7 +108,7 @@ def ambiente():
     glutSolidCube(0.9)
     glPopMatrix()
 
-    porta(5.35,1.09,3.0,90)
+#     porta(5.35,1.09,3.0,90)
 
     #textura parede1
     glPushMatrix()

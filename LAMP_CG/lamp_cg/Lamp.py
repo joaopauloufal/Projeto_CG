@@ -52,7 +52,6 @@ aux3 = 0
 aux4 = 0
 angulo = 45
 
-objAnimadoCompil=0
 #Melhorar cena
 global objCompilado
 global tempo,quadro,var
@@ -61,11 +60,20 @@ quadro = 0
 var = 0
 
 
-#Animação
+#Animação Ventilador
+ventAnimadoCompil=0
 global ventLigDesl
 global ventAnimado
-ventAnimado = 0
+ventAnimado = 90
 ventLigDesl = False
+
+
+#Animação Ventilador
+portaAnimadoCompil=0
+global portaLigDesl
+global portaAnimado
+portaAnimado = 0
+portaLigDesl = False
 
 def eixos():
 
@@ -148,18 +156,31 @@ def desenho():
     quadroBranco(5.2, 2.5, -1.0, 0)
     ponto(5.2, 2.5, 1.5, 0)
 
-def ventiladorAnimado():
+def ventiladorAnimacao():
     #todas as animacoes
     global ventAnimado
-    global objAnimadoCompil
+    global ventAnimadoCompil
 
-    glNewList(objAnimadoCompil, GL_COMPILE)
+    glNewList(ventAnimadoCompil, GL_COMPILE)
     if (ventAnimado == 90):
         ventAnimado = 0
     ventilador(3.0,3.5,0.0, ventAnimado)
     ventilador(-3.0,3.5,0.0, ventAnimado)
     ventAnimado = ventAnimado + 5
     glEndList()
+
+def portaAnimacao(verifica):
+    #todas as animacoes
+    global portaAnimado
+    global portaAnimadoCompil
+
+    glNewList(portaAnimadoCompil, GL_COMPILE)
+    if (verifica == False):
+        porta(5.35,1.09,3.0,90)
+    else:
+        porta(4.8,1.09,3.5,150)
+    glEndList()
+
 
 def iluminacao_da_cena1():
 
@@ -249,8 +270,11 @@ def tela():
 
     #Ventilador animado
     global ventLigDesl
-    global objAnimadoCompil
+    global ventAnimadoCompil
 
+    #Porta
+    global portaLigDesl
+    global portaAnimadoCompil
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # Limpar a tela
     glClearColor(0, 0, 0, 0) # Limpa a janela com a cor especificada
@@ -270,9 +294,14 @@ def tela():
     glEnable(GL_NORMALIZE)
 
     glCallList(objCompilado)
-    glCallList(objAnimadoCompil)
+    glCallList(ventAnimadoCompil)
+    glCallList(portaAnimadoCompil)
     if (ventLigDesl == True):
-        ventiladorAnimado()
+        ventiladorAnimacao()
+    if (portaLigDesl == True):
+        portaAnimacao(portaLigDesl)
+    else:
+        portaAnimacao(portaLigDesl)
 #     desenho()
     glutSwapBuffers()
 #     glFlush()
@@ -319,6 +348,9 @@ def Teclado(tecla, x ,y):
 
     #Ventilador animado
     global ventLigDesl
+    
+    #Ventilador animado
+    global portaLigDesl
 
     if tecla == b'a':  # tecla A
         angleY = angleY - 0.05
@@ -346,6 +378,13 @@ def Teclado(tecla, x ,y):
             ventLigDesl = True
         else:
             ventLigDesl = False
+            
+    if tecla == b'p': # tecla S
+        print portaLigDesl
+        if (portaLigDesl == False):
+            portaLigDesl = True
+        else:
+            portaLigDesl = False
 
     tela()
     glutPostRedisplay()
@@ -370,14 +409,17 @@ def ControleMouse(button, state, x, y):
 
 
 def init():
-    global objCompilado,objAnimadoCompil
+    global objCompilado,ventAnimadoCompil, portaAnimadoCompil,  portaLigDesl
+
     objCompilado = glGenLists(1)
 
     glNewList(objCompilado, GL_COMPILE)
     desenho()
     glEndList()
-    objAnimadoCompil = glGenLists(2)
-    ventiladorAnimado()
+    ventAnimadoCompil = glGenLists(2)
+    ventiladorAnimacao()
+    portaAnimadoCompil = glGenLists(3)
+    portaAnimacao(portaLigDesl)
 
 def animar():
     glutPostRedisplay()
